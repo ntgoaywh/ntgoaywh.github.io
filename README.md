@@ -1,0 +1,2 @@
+# ntgoaywh.github.io
+Hugo
