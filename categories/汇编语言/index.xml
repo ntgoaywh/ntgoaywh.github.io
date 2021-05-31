@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>汇编语言 - 分类 - Learning</title>
+        <link>https://ntgoaywh.github.io/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link>
+        <description>汇编语言 - 分类 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Apr 2021 08:16:08 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="self" type="application/rss+xml" /><item>
+    <title>汇编语言程序设计：用户输入‘1’时显示数字0~9，输入‘2’时显示学号，其他输入时程序退出</title>
+    <link>https://ntgoaywh.github.io/asm-1/</link>
+    <pubDate>Sun, 25 Apr 2021 08:16:08 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/asm-1/</guid>
+    <description><![CDATA[题目具体为：获取用户输入，并根据用户输入的内容显示不同内容。其中，用户输入‘1’时显示数字0~9，输入‘2’时显示学号，其他输入时程序退出。]]></description>
+</item></channel>
+</rss>

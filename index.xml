@@ -1,0 +1,81 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Learning</title>
+        <link>https://ntgoaywh.github.io/</link>
+        <description>Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 31 May 2021 22:48:07 &#43;0800</lastBuildDate>
+            <atom:link href="https://ntgoaywh.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Test</title>
+    <link>https://ntgoaywh.github.io/test/</link>
+    <pubDate>Mon, 31 May 2021 22:48:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/test/</guid>
+    <description><![CDATA[Hello World!]]></description>
+</item><item>
+    <title>Oracle甲骨文dd教程</title>
+    <link>https://ntgoaywh.github.io/oracle-dd/</link>
+    <pubDate>Sun, 30 May 2021 17:37:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/oracle-dd/</guid>
+    <description><![CDATA[前提：初始化版本是Canonical Ubuntu 16.04 把下面脚本扔进CLOUD-INIT即可，除了系统，其他不更改 #!/bin/bash echo root:Abc123456 |sudo chpasswd root sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config; sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config; sudo service]]></description>
+</item><item>
+    <title>如何提高国内访问GitHub的速度达到3MB/S以上（轻松解决）</title>
+    <link>https://ntgoaywh.github.io/github-proxy/</link>
+    <pubDate>Thu, 06 May 2021 16:03:33 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/github-proxy/</guid>
+    <description><![CDATA[为什么GitHub下载速度这么慢？ GitHub，我们都知道是世界上最大的开源及私有软件项目的托管平台，全世界每天有海量优秀的开源软件在这里产]]></description>
+</item><item>
+    <title>以数指定年、月、日的日期打印出来</title>
+    <link>https://ntgoaywh.github.io/python-index/</link>
+    <pubDate>Sun, 02 May 2021 14:49:24 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/python-index/</guid>
+    <description><![CDATA[months=[ &#39;Januray&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;, &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;, &#39;October&#39;, &#39;November&#39;, &#39;December&#39; ] endings=[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]+17*[&#39;th&#39;]\ +[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]+7*[&#39;th&#39;]\ +[&#39;st&#39;] year=input(&#39;Year:&#39;) month=input(&#39;Month(1-12):&#39;) day=input(&#39;Day(1-31):&#39;) month_number=int(month) day_number=int(day) month_name = months[month_number-1] ordinal=day+endings[day_number-1] print(month_name+&#39; &#39;+ordinal+&#39;,&#39;+year)]]></description>
+</item><item>
+    <title>The difference between Supervised Learning and Unsupervised Learning</title>
+    <link>https://ntgoaywh.github.io/the-difference-between-supervised-learning-and-unsupervised/</link>
+    <pubDate>Sat, 01 May 2021 13:14:02 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/the-difference-between-supervised-learning-and-unsupervised/</guid>
+    <description><![CDATA[Today I watched the video made by Andrew Ng about the Supervised Learning and Unsupervised Learning, I want to write a summary to tell what is Supervised Learning and what is Unsupervised Learning.
+Supervised Learning In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
+Supervised learning problems are categorized into “regression” and “classification” problems.]]></description>
+</item><item>
+    <title>Machine Learning</title>
+    <link>https://ntgoaywh.github.io/machine-learning/</link>
+    <pubDate>Sat, 01 May 2021 04:30:12 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/machine-learning/</guid>
+    <description><![CDATA[From today, I will start to study the machine learning course taught by Professor Andrew Ng. Here I will record my study notes and experience. Week 1 Welcome What’s machine learning? There’s a science of getting computers to learn without being [explicitly programmed](https://intellipaat.com/community/7509/difference-between-machine-learning-and-explicit-programming#:~:text=Explicitly programmed%3A Writing out the,to you about Machine Learning.]]></description>
+</item><item>
+    <title>It is required that your private key files are NOT accessible by others的解决办法</title>
+    <link>https://ntgoaywh.github.io/private-key-files-are-not-accessible/</link>
+    <pubDate>Wed, 28 Apr 2021 11:53:07 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/private-key-files-are-not-accessible/</guid>
+    <description><![CDATA[今天在Ubuntu上想通过终端ssh直接连接我的服务器，我使用的是密钥登录，然而当我输入 ssh -i cali.pem ubuntu@my ip 后，出现Are you sure you want to continue connecting (yes/no)? ，我输入了y]]></description>
+</item><item>
+    <title>Ubuntu安装Anaconda时出现的一些问题</title>
+    <link>https://ntgoaywh.github.io/ubuntu-anaconda/</link>
+    <pubDate>Wed, 28 Apr 2021 09:02:34 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/ubuntu-anaconda/</guid>
+    <description><![CDATA[今天给电脑安装了Ubuntu，在给Ubuntu安装Anaconda后，在终端输入conda可检测Anaconda是否成功安装，若提示没有该命]]></description>
+</item><item>
+    <title>Ubuntu中出现无法连接dl.google.com:80</title>
+    <link>https://ntgoaywh.github.io/ubuntu-dl-google-com-80/</link>
+    <pubDate>Mon, 26 Apr 2021 16:09:52 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/ubuntu-dl-google-com-80/</guid>
+    <description><![CDATA[系统环境 Ubuntu 20.04 问题描述 执行 sudo apt-get update 命令时，发现出现以下错误： Could not connect to dl.google.com:80 (6.6.6.6), connection timed out 解决方法 这里通过修改/etc/hosts文件来解决这个问题，先输入]]></description>
+</item><item>
+    <title>安装ubuntu和windows双系统出现ACPI error、花屏等问题的解决办法</title>
+    <link>https://ntgoaywh.github.io/ubuntu-acpi-bios-error/</link>
+    <pubDate>Mon, 26 Apr 2021 15:54:47 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/ubuntu-acpi-bios-error/</guid>
+    <description><![CDATA[今天在给Win10的电脑安装Ubuntu时出现了下图所示的问题，显示ACPI BIOS Error，acpi=off，并且出现了很多乱码，在网上搜索半]]></description>
+</item></channel>
+</rss>

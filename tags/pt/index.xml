@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>PT - 标签 - Learning</title>
+        <link>https://ntgoaywh.github.io/tags/pt/</link>
+        <description>PT - 标签 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Jan 2021 11:21:57 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/tags/pt/" rel="self" type="application/rss+xml" /><item>
+    <title>一键PT脚本安装qBittorrent&#43;Deluge&#43;rTorrent&#43;Transmission</title>
+    <link>https://ntgoaywh.github.io/qbittorrent-deluge-rtorrent-transmission/</link>
+    <pubDate>Mon, 25 Jan 2021 11:21:57 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/qbittorrent-deluge-rtorrent-transmission/</guid>
+    <description><![CDATA[注意事项 本脚本只支持 x86_64 (amd64) 架构，其他架构都不支持。ARM 用户建议使用 QuickBox ARM 本脚本只在独服和 KVM 虚拟化的 VPS 下测试，OpenVZ、Xen 等其他虚拟化架]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>测试 VPS 本地连接最大速度 iperf3 - Learning</title><meta name="Description" content=""><meta property="og:title" content="测试 VPS 本地连接最大速度 iperf3" />
+<meta property="og:description" content="大多 VPS 测速脚本使用 speedtest、fast.com 测速节点，很多时候不能真实反映本地连接速度，最直接方法还是从本地发起测试。有个 iperf3 工具可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ntgoaywh.github.io/speed-test-iperf3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-25T11:35:41&#43;00:00" />
+<meta property="article:modified_time" content="2021-01-25T11:35:41&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="测试 VPS 本地连接最大速度 iperf3"/>
+<meta name="twitter:description" content="大多 VPS 测速脚本使用 speedtest、fast.com 测速节点，很多时候不能真实反映本地连接速度，最直接方法还是从本地发起测试。有个 iperf3 工具可"/>
+<meta name="application-name" content="Learning">
+<meta name="apple-mobile-web-app-title" content="Learning"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ntgoaywh.github.io/speed-test-iperf3/" /><link rel="prev" href="https://ntgoaywh.github.io/frp/" /><link rel="next" href="https://ntgoaywh.github.io/cloudflare-cdn/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "测试 VPS 本地连接最大速度 iperf3",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ntgoaywh.github.io\/speed-test-iperf3\/"
+        },"genre": "posts","wordcount":  518 ,
+        "url": "https:\/\/ntgoaywh.github.io\/speed-test-iperf3\/","datePublished": "2021-01-25T11:35:41+00:00","dateModified": "2021-01-25T11:35:41+00:00","publisher": {
+            "@type": "Organization",
+            "name": "limttkx"},"author": {
+                "@type": "Person",
+                "name": "limttkx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Learning">Learning</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 归档 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Learning">Learning</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">归档</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">测试 VPS 本地连接最大速度 iperf3</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>limttkx</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/"><i class="far fa-folder fa-fw"></i>服务搭建</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-25">2021-01-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 518 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#获取安装-iperf3">获取安装 iperf3</a>
+      <ul>
+        <li><a href="#centos">Centos</a></li>
+        <li><a href="#ubuntudebian">Ubuntu/Debian</a></li>
+      </ul>
+    </li>
+    <li><a href="#iperf3-测速用法">iperf3 测速用法</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>大多 VPS 测速脚本使用 speedtest、fast.com 测速节点，很多时候不能真实反映本地连接速度，最直接方法还是从本地发起测试。有个 iperf3 工具可以从本地测试 VPS 可达的最大带宽速度，支持 TCP /UDP 多线程并发测速。</p>
+<h2 id="获取安装-iperf3">获取安装 iperf3</h2>
+<h3 id="centos">Centos</h3>
+<pre><code>	yum -y install iperf3
+</code></pre><h3 id="ubuntudebian">Ubuntu/Debian</h3>
+<pre><code>apt-get -y install iperf3
+</code></pre><p>VPS 和本地都要安装。CentOS 或 Ubuntu 系统可以直接在自带软件源里获得。其它 Linux 发行版、macOS 或 Windows 系统，可以从<a href="https://iperf.fr/iperf-download.php" target="_blank" rel="noopener noreffer">这里下载</a>。</p>
+<p>Windows 版本下载解压后，不是直接运行 .exe 文件，而是将解压文件（不包括文件夹）放入到 <strong><code>系统盘:\Windows\System32</code></strong> 文件夹下，之后以管理员身份运行“命令提示符”输入测速命令。</p>
+<h2 id="iperf3-测速用法">iperf3 测速用法</h2>
+<p>先在 VPS 上运行 iperf3 进程。其中 <code>-s</code> 参数表示服务器端，<code>-p</code> 指定使用端口（默认端口 5201。别忘了<a href="https://www.hostarr.com/firewalld-tutorial/" target="_blank" rel="noopener noreffer">防火墙放行端口</a>）。如果需要以守护进程后台运行，追加 <code>-D</code> 参数。</p>
+<pre><code>iperf3 -s -p 5201 
+</code></pre><p>然后在本机发起测速。其中 <code>-c</code> 参数表示客户端并指定测速服务器地址，<code>-p</code> 指定服务器端口，<code>-t</code> 指定测试时长（单位秒），<code>-P</code> 指定并发连接数（越高越能测试到速度极限），<code>-R</code> 表示下载测速（不加参数则测试上传速度）。如果要测试 UDP 连接，追加 <code>-u</code> 参数。<a href="http://software.es.net/iperf/invoking.html#iperf3-manual-page" target="_blank" rel="noopener noreffer">点此查看完整参数</a>。</p>
+<pre><code>iperf3 -c x.x.x.x -p 5201 -t 60 -P 10 -R
+</code></pre><p>运行结果如下图，[SUM] 行就是测试数据（以 receiver 为准），带宽测速平均每秒427Mbits。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210117183504.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210117183504.png, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210117183504.png 1.5x, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210117183504.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210117183504.png"
+        title="img" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-01-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/frp/" class="prev" rel="prev" title="利用腾讯轻量服务器搭建FRP服务"><i class="fas fa-angle-left fa-fw"></i>利用腾讯轻量服务器搭建FRP服务</a>
+            <a href="/cloudflare-cdn/" class="next" rel="next" title="(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS">(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

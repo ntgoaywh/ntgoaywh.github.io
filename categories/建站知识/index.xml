@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>建站知识 - 分类 - Learning</title>
+        <link>https://ntgoaywh.github.io/categories/%E5%BB%BA%E7%AB%99%E7%9F%A5%E8%AF%86/</link>
+        <description>建站知识 - 分类 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 10 Feb 2021 17:32:55 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/categories/%E5%BB%BA%E7%AB%99%E7%9F%A5%E8%AF%86/" rel="self" type="application/rss+xml" /><item>
+    <title>从零开始搭建一个属于自己的博客(纯小白教程)</title>
+    <link>https://ntgoaywh.github.io/blog-da-jian/</link>
+    <pubDate>Wed, 10 Feb 2021 17:32:55 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/blog-da-jian/</guid>
+    <description><![CDATA[前言 趁着寒假有时间，我回顾了我搭建博客的过程，于是想分享下自己的经验，写一篇小白也能看懂的教程，让每个人都能够搭建属于自己的博客。 所需条件 一]]></description>
+</item><item>
+    <title>利用反向代理和DNS智能解析加快网站访问速度</title>
+    <link>https://ntgoaywh.github.io/fan-xiang-dai-li-dns/</link>
+    <pubDate>Fri, 29 Jan 2021 07:32:31 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/fan-xiang-dai-li-dns/</guid>
+    <description><![CDATA[自从上次绿云（GreenCloud）突然的系统故障导致我的博客数据取不出来后，我决定放弃用绿云建站，转而使用口碑更好、更加稳定的contab]]></description>
+</item><item>
+    <title>The certificate of ‘raw.githubusercontent.com’ is not trusted的解决办法</title>
+    <link>https://ntgoaywh.github.io/55/</link>
+    <pubDate>Thu, 10 Dec 2020 23:48:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/55/</guid>
+    <description><![CDATA[今天甲骨文选择Ubuntu16.04后，用萌咖的dd脚本dd成Debian9后，安装探针使用 wget https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh 出现 ERROR: The certificate of ‘raw.githubuserc]]></description>
+</item></channel>
+</rss>

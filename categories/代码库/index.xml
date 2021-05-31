@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>代码库 - 分类 - Learning</title>
+        <link>https://ntgoaywh.github.io/categories/%E4%BB%A3%E7%A0%81%E5%BA%93/</link>
+        <description>代码库 - 分类 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 02 May 2021 14:49:24 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/categories/%E4%BB%A3%E7%A0%81%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+    <title>以数指定年、月、日的日期打印出来</title>
+    <link>https://ntgoaywh.github.io/python-index/</link>
+    <pubDate>Sun, 02 May 2021 14:49:24 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/python-index/</guid>
+    <description><![CDATA[months=[ &#39;Januray&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;, &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;, &#39;October&#39;, &#39;November&#39;, &#39;December&#39; ] endings=[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]+17*[&#39;th&#39;]\ +[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]+7*[&#39;th&#39;]\ +[&#39;st&#39;] year=input(&#39;Year:&#39;) month=input(&#39;Month(1-12):&#39;) day=input(&#39;Day(1-31):&#39;) month_number=int(month) day_number=int(day) month_name = months[month_number-1] ordinal=day+endings[day_number-1] print(month_name+&#39; &#39;+ordinal+&#39;,&#39;+year)]]></description>
+</item></channel>
+</rss>

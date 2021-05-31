@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>技术教程 - 标签 - Learning</title>
+        <link>https://ntgoaywh.github.io/tags/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/</link>
+        <description>技术教程 - 标签 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 06 Dec 2020 23:28:00 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/tags/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>ServerStatus-Hotaru探针安装时可能出现的问题及解决办法</title>
+    <link>https://ntgoaywh.github.io/49/</link>
+    <pubDate>Sun, 06 Dec 2020 23:28:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/49/</guid>
+    <description><![CDATA[一.Caddy解压失败或压缩文件错误 bash status.sh s 在服务端运行以上代码时，若直接选择由脚本自动配置HTTP服务，最终会出现这样的错误：Caddy解压]]></description>
+</item><item>
+    <title>使用IPV6访问Google避免Google人机验证</title>
+    <link>https://ntgoaywh.github.io/43/</link>
+    <pubDate>Sun, 29 Nov 2020 22:11:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/43/</guid>
+    <description><![CDATA[<h2 id="一首先修改-etcsysctlconf-加入下面三行内容">一.首先修改 /etc/sysctl.conf ，加入下面三行内容</h2>
+<pre><code>net.ipv6.conf.all.disable_ipv6 = 0
+net.ipv6.conf.default.disable_ipv6 = 0
+net.ipv6.conf.lo.disable_ipv6 = 0
+</code></pre>]]></description>
+</item><item>
+    <title>Linux系统下，一键安装Centos6-7、Debian7-10、Ubuntu14-18、Windows等</title>
+    <link>https://ntgoaywh.github.io/38/</link>
+    <pubDate>Wed, 25 Nov 2020 22:08:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/38/</guid>
+    <description><![CDATA[一.dd Ubuntu系统 wget -N --no-check-certificate https://raw.githubusercontent.com/veip007/dd/master/dd-od.sh &amp;&amp; chmod +x dd-od.sh &amp;&amp; ./dd-od.sh 或 wget -N --no-check-certificate https://raw.githubusercontent.com/veip007/dd/master/dd-gd.sh &amp;&amp; chmod +x dd-gd.sh &amp;&amp; ./dd-gd.sh （镜像文件位置不同） Ubuntu 14.04×64 用户名：root 密码：MoeClub]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>用腾讯轻量搭建带WEB控制台的MC服务器 - Learning</title><meta name="Description" content=""><meta property="og:title" content="用腾讯轻量搭建带WEB控制台的MC服务器" />
+<meta property="og:description" content="众所周知mc多好玩，大家都喜爱，可是守护进程有点麻烦，screen经常会有些问题，所以不如搞个面板，顺便也解决守护进程问题 （能不用手就不用手" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ntgoaywh.github.io/minecraft-build/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-27T15:55:07&#43;00:00" />
+<meta property="article:modified_time" content="2021-01-27T15:55:07&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用腾讯轻量搭建带WEB控制台的MC服务器"/>
+<meta name="twitter:description" content="众所周知mc多好玩，大家都喜爱，可是守护进程有点麻烦，screen经常会有些问题，所以不如搞个面板，顺便也解决守护进程问题 （能不用手就不用手"/>
+<meta name="application-name" content="Learning">
+<meta name="apple-mobile-web-app-title" content="Learning"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ntgoaywh.github.io/minecraft-build/" /><link rel="prev" href="https://ntgoaywh.github.io/cloudflare-cdn/" /><link rel="next" href="https://ntgoaywh.github.io/hetzner/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "用腾讯轻量搭建带WEB控制台的MC服务器",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ntgoaywh.github.io\/minecraft-build\/"
+        },"genre": "posts","wordcount":  672 ,
+        "url": "https:\/\/ntgoaywh.github.io\/minecraft-build\/","datePublished": "2021-01-27T15:55:07+00:00","dateModified": "2021-01-27T15:55:07+00:00","publisher": {
+            "@type": "Organization",
+            "name": "limttkx"},"author": {
+                "@type": "Person",
+                "name": "limttkx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Learning">Learning</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 归档 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Learning">Learning</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">归档</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">用腾讯轻量搭建带WEB控制台的MC服务器</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>limttkx</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/"><i class="far fa-folder fa-fw"></i>服务搭建</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-27">2021-01-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 672 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一安装宝塔">一.安装宝塔</a>
+      <ul>
+        <li><a href="#centos安装命令">Centos安装命令</a></li>
+        <li><a href="#试验性centosubuntudebian安装命令独立运行环境py37-可能存在少量兼容性问题-不断优化中">试验性Centos/Ubuntu/Debian安装命令独立运行环境（py3.7） 可能存在少量兼容性问题 不断优化中</a></li>
+        <li><a href="#ubuntudeepin安装命令">Ubuntu/Deepin安装命令</a></li>
+        <li><a href="#debian安装命令">Debian安装命令</a></li>
+        <li><a href="#fedora安装命令">Fedora安装命令</a></li>
+        <li><a href="#linux面板751升级命令">Linux面板7.5.1升级命令</a></li>
+        <li><a href="#图简便">图简便</a></li>
+      </ul>
+    </li>
+    <li><a href="#二bds">二.BDS</a></li>
+    <li><a href="#三面板">三.面板</a>
+      <ul>
+        <li><a href="#项目地址">项目地址</a></li>
+      </ul>
+    </li>
+    <li><a href="#四部署服务">四.部署服务</a>
+      <ul>
+        <li><a href="#创建文件夹">创建文件夹</a></li>
+        <li><a href="#进入文件夹">进入文件夹</a></li>
+        <li><a href="#下载面板">下载面板</a></li>
+        <li><a href="#新建文件夹并进入文件夹">新建文件夹并进入文件夹</a></li>
+        <li><a href="#下载mc服务端">下载MC服务端</a></li>
+        <li><a href="#解压文件">解压文件</a></li>
+        <li><a href="#切换到上级目录">切换到上级目录</a></li>
+        <li><a href="#安装nodejs">安装nodejs</a></li>
+        <li><a href="#防火墙">防火墙</a></li>
+      </ul>
+    </li>
+    <li><a href="#五访问">五.访问</a></li>
+    <li><a href="#六docker方式部署懒人必备">六.Docker方式部署(懒人必备)</a>
+      <ul>
+        <li><a href="#项目地址-1">项目地址</a></li>
+      </ul>
+    </li>
+    <li><a href="#七其他">七.其他</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>众所周知mc多好玩，大家都喜爱，可是守护进程有点麻烦，screen经常会有些问题，所以不如搞个面板，顺便也解决守护进程问题 （能不用手就不用手），腾讯轻量大家应该都有，直接开始。</p>
+<h2 id="一安装宝塔">一.安装宝塔</h2>
+<p>选择好相应的系统后，用对应的脚本安装宝塔面板。</p>
+<h3 id="centos安装命令">Centos安装命令</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">yum install -y wget <span class="o">&amp;&amp;</span> wget -O install.sh http://download.bt.cn/install/install_6.0.sh <span class="o">&amp;&amp;</span> sh install.sh
+</code></pre></div><h3 id="试验性centosubuntudebian安装命令独立运行环境py37-可能存在少量兼容性问题-不断优化中">试验性Centos/Ubuntu/Debian安装命令独立运行环境（py3.7） 可能存在少量兼容性问题 不断优化中</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">curl -sSO http://download.bt.cn/install/install_panel.sh <span class="o">&amp;&amp;</span> bash install_panel.sh 
+</code></pre></div><h3 id="ubuntudeepin安装命令">Ubuntu/Deepin安装命令</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh <span class="o">&amp;&amp;</span> sudo bash install.sh
+</code></pre></div><h3 id="debian安装命令">Debian安装命令</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh <span class="o">&amp;&amp;</span> bash install.sh
+</code></pre></div><h3 id="fedora安装命令">Fedora安装命令</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget -O install.sh http://download.bt.cn/install/install_6.0.sh <span class="o">&amp;&amp;</span> bash install.sh 
+</code></pre></div><h3 id="linux面板751升级命令">Linux面板7.5.1升级命令</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">curl http://download.bt.cn/install/update6.sh<span class="p">|</span>bash
+</code></pre></div><h3 id="图简便">图简便</h3>
+<p>直接选用应用镜像</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221312.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221312.png, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221312.png 1.5x, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221312.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221312.png"
+        title="宝塔" /></p>
+<h2 id="二bds">二.BDS</h2>
+<p>bds是mc官方搞的一个基岩版服务端，可以直接运行，分有win/linux</p>
+<p>链接 <a href="https://www.minecraft.net/en-us/download/server/bedrock">https://www.minecraft.net/en-us/download/server/bedrock</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221829.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221829.png, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221829.png 1.5x, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221829.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210126221829.png"
+        title="2" /></p>
+<h2 id="三面板">三.面板</h2>
+<p>选择GitHub上一位大佬的面板，使用的是nodejs</p>
+<h3 id="项目地址">项目地址</h3>
+<p><a href="https://github.com/LomotHo/bedrock-console">https://github.com/LomotHo/bedrock-console</a></p>
+<h2 id="四部署服务">四.部署服务</h2>
+<p>连接服务器，然后依次进行以下步骤</p>
+<h3 id="创建文件夹">创建文件夹</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">mkdir mc
+</code></pre></div><h3 id="进入文件夹">进入文件夹</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> mc
+</code></pre></div><h3 id="下载面板">下载面板</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/LomotHo/bedrock-console.git <span class="o">&amp;&amp;</span><span class="nb">cd</span> bedrock-console
+</code></pre></div><h3 id="新建文件夹并进入文件夹">新建文件夹并进入文件夹</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">mkdir bedrock <span class="o">&amp;&amp;</span><span class="nb">cd</span> bedrock 
+</code></pre></div><h3 id="下载mc服务端">下载MC服务端</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.201.02.zip
+</code></pre></div><h3 id="解压文件">解压文件</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">unzip bedrock-server-1.16.201.02.zip
+</code></pre></div><h3 id="切换到上级目录">切换到上级目录</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ..
+</code></pre></div><h3 id="安装nodejs">安装nodejs</h3>
+<h4 id="centos">Centos</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">yum install nodejs -y
+</code></pre></div><h4 id="ubuntudebian">Ubuntu/Debian</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">apt-get install nodejs -y 
+</code></pre></div><h4 id="运行nodejs">运行nodejs</h4>
+<pre><code>cd vue
+ 
+npm i
+
+npm run build
+
+ 
+cd ..
+
+ 
+npm i
+
+ 
+node app.js 
+</code></pre><h3 id="防火墙">防火墙</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234428.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234428.png, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234428.png 1.5x, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234428.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234428.png"
+        title="firewall" /></p>
+<p>打开图上所示的端口</p>
+<h2 id="五访问">五.访问</h2>
+<p>在浏览器中输入 ip:3000 就能控制了</p>
+<p>打开宝塔-软件商店-安装Supervisor管理器</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234649.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234649.png, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234649.png 1.5x, https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234649.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210127234649.png"
+        title="supervisor" /></p>
+<p>就可以自由玩了</p>
+<h2 id="六docker方式部署懒人必备">六.Docker方式部署(懒人必备)</h2>
+<h3 id="项目地址-1">项目地址</h3>
+<p><a href="https://github.com/LomotHo/bedrock-console">https://github.com/LomotHo/bedrock-console</a></p>
+<p>其中有docker版本，完成后既能有守护进程，也有面板。</p>
+<h2 id="七其他">七.其他</h2>
+<p>腾讯的docker加速器 <a href="https://mirror.ccs.tencentyun.com/" target="_blank" rel="noopener noreffer">https://mirror.ccs.tencentyun.com</a>，配置在腾讯的服务器，内网速度很快。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-01-27</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/cloudflare-cdn/" class="prev" rel="prev" title="(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS"><i class="fas fa-angle-left fa-fw"></i>(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS</a>
+            <a href="/hetzner/" class="next" rel="next" title="Hetzner拍卖机简单评测">Hetzner拍卖机简单评测<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>VPS测试 - 标签 - Learning</title>
+        <link>https://ntgoaywh.github.io/tags/vps%E6%B5%8B%E8%AF%95/</link>
+        <description>VPS测试 - 标签 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 02 Dec 2020 00:10:00 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/tags/vps%E6%B5%8B%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+    <title>常用VPS测试脚本整理</title>
+    <link>https://ntgoaywh.github.io/44/</link>
+    <pubDate>Wed, 02 Dec 2020 00:10:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/44/</guid>
+    <description><![CDATA[非开心版测速脚本(较准确) wget --no-check-certificate https://raw.githubusercontent.com/zzycwmx/CDN/master/superbench2.sh &amp;&amp; bash superbench2.sh 检测VPS的CPU、内存、负载、IO读写、机房带宽等 wget -qO- bench.sh | bash 三网测速脚本 bash &lt;(curl -Lso- https://git.io/superspeed) 路由测试脚本 bash &lt;(curl -sL mcnb.top/besttcp.sh)]]></description>
+</item><item>
+    <title>搭建VPS网页端测速</title>
+    <link>https://ntgoaywh.github.io/41/</link>
+    <pubDate>Sun, 29 Nov 2020 00:26:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/41/</guid>
+    <description><![CDATA[使用docker安装 先安装docker，若已安装可跳过 curl -sSL https://get.docker.com/ | sh systemctl start docker systemctl enable docker 拉取镜像 docker pull badapple9/speedtest-x 运行容器 docker run -d -p 9001:80 -it badapple9/speedtest-x 打开网页 你的IP：9001]]></description>
+</item></channel>
+</rss>

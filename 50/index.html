@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>(萌咖) 一键DD脚本CentOS/Debian/Ubuntu - Learning</title><meta name="Description" content=""><meta property="og:title" content="(萌咖) 一键DD脚本CentOS/Debian/Ubuntu" />
+<meta property="og:description" content="一.一键DD Linux系统的用途
+基本所有的VPS服务器商家，都会提供免费的Linux系统供安装，比如CentOS、Debian、Ubuntu等。那为什么还要使用一键DD脚本重装/更换系统呢？
+商家提供的系统版本有限，可能没有自己需要的版本。
+商家的系统安装有自己不想要的服务，比如国内的阿里云盾（安骑士）。
+商家的系统无法安装特定软件，比如很挑内核的锐速。
+以上几种情况，一键DD脚本就可以为服务器更换一个纯净的系统，帮你解决问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ntgoaywh.github.io/50/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-12-10T00:03:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-12-10T00:03:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="(萌咖) 一键DD脚本CentOS/Debian/Ubuntu"/>
+<meta name="twitter:description" content="一.一键DD Linux系统的用途
+基本所有的VPS服务器商家，都会提供免费的Linux系统供安装，比如CentOS、Debian、Ubuntu等。那为什么还要使用一键DD脚本重装/更换系统呢？
+商家提供的系统版本有限，可能没有自己需要的版本。
+商家的系统安装有自己不想要的服务，比如国内的阿里云盾（安骑士）。
+商家的系统无法安装特定软件，比如很挑内核的锐速。
+以上几种情况，一键DD脚本就可以为服务器更换一个纯净的系统，帮你解决问题。"/>
+<meta name="application-name" content="Learning">
+<meta name="apple-mobile-web-app-title" content="Learning"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ntgoaywh.github.io/50/" /><link rel="prev" href="https://ntgoaywh.github.io/49/" /><link rel="next" href="https://ntgoaywh.github.io/51/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "(萌咖) 一键DD脚本CentOS/Debian/Ubuntu",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ntgoaywh.github.io\/50\/"
+        },"genre": "posts","wordcount":  1156 ,
+        "url": "https:\/\/ntgoaywh.github.io\/50\/","datePublished": "2020-12-10T00:03:00+00:00","dateModified": "2020-12-10T00:03:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "limttkx"},"author": {
+                "@type": "Person",
+                "name": "limttkx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Learning">Learning</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 归档 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Learning">Learning</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">归档</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">(萌咖) 一键DD脚本CentOS/Debian/Ubuntu</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>limttkx</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86/"><i class="far fa-folder fa-fw"></i>脚本合集</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-10">2020-12-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1156 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一一键dd-linux系统的用途">一.一键DD Linux系统的用途</a></li>
+    <li><a href="#二一键dd脚本使用教程">二.一键DD脚本使用教程</a>
+      <ul>
+        <li><a href="#重装为centos-69">重装为CentOS 6.9：</a></li>
+        <li><a href="#重装为debian">重装为Debian：</a></li>
+        <li><a href="#重装为ubuntu">重装为Ubuntu：</a></li>
+      </ul>
+    </li>
+    <li><a href="#三关于系统重装过程">三.关于系统重装过程</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="一一键dd-linux系统的用途">一.一键DD Linux系统的用途</h2>
+<p>基本所有的VPS服务器商家，都会提供免费的Linux系统供安装，比如CentOS、Debian、Ubuntu等。那为什么还要使用一键DD脚本重装/更换系统呢？</p>
+<p>商家提供的系统版本有限，可能没有自己需要的版本。<br>
+商家的系统安装有自己不想要的服务，比如国内的阿里云盾（安骑士）。<br>
+商家的系统无法安装特定软件，比如很挑内核的锐速。<br>
+以上几种情况，一键DD脚本就可以为服务器更换一个纯净的系统，帮你解决问题。</p>
+<p>所需环境<br>
+以网络流传较广的Vicer一键DD为例，其所需环境为：</p>
+<p>架构：KVM/XEN，不支持OpenVZ。</p>
+<p>系统：Debian/Ubuntu/CentOS</p>
+<h2 id="二一键dd脚本使用教程">二.一键DD脚本使用教程</h2>
+<p>注意事项：</p>
+<p>Vicer脚本目前不支持重装为CentOS 7系统，支持CentOS 6.9以下版本。<br>
+重装的系统源自官方发行版。<br>
+安装过程全自动进行，无需VNC操作，无需进入救援模式。<br>
+系统安装完成后的默认用户名为root，默认密码为:MoeClub.org<br>
+DD脚本示例：</p>
+<p>由于脚本命令中需要写明目标系统版本，所以根据需求不同，最终的运行命令也各不相同。</p>
+<p>下面提供几个使用范例，可以直接复制使用，也可以将命令中的系统版本替换为其它版本。</p>
+<h3 id="重装为centos-69">重装为CentOS 6.9：</h3>
+<p>以下命令中的 -c 后面为CentOS版本号，-v 后面为64位/32位，可根据需求进行替换。</p>
+<h4 id="centos-69-64位">CentOS 6.9 64位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -c 6.9 -v <span class="m">64</span> -a
+</code></pre></div><h4 id="centos-69-32位">CentOS 6.9 32位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -c 6.9 -v <span class="m">32</span> -a
+</code></pre></div><h3 id="重装为debian">重装为Debian：</h3>
+<p>以下命令中的 -d 后面为Debian版本号，-v 后面为64位/32位，可根据需求进行替换。</p>
+<h4 id="debian-8-64位">Debian 8 64位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -d <span class="m">8</span> -v <span class="m">64</span> -a
+</code></pre></div><h4 id="debian-9-64位">Debian 9 64位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -d <span class="m">9</span> -v <span class="m">64</span> -a
+</code></pre></div><h3 id="重装为ubuntu">重装为Ubuntu：</h3>
+<p>以下命令中的 -u 后面为Ubuntu版本号，-v 后面为64位/32位，可根据需求进行替换。</p>
+<h4 id="ubuntu-1204-64位">Ubuntu 12.04 64位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -u 12.04 -v <span class="m">64</span> -a
+</code></pre></div><h4 id="ubuntu-1404-64位">Ubuntu 14.04 64位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -u 14.04 -v <span class="m">64</span> -a
+</code></pre></div><h4 id="ubuntu-1604-64位">Ubuntu 16.04 64位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -u 16.04 -v <span class="m">64</span> -a
+</code></pre></div><h4 id="ubuntu-1804-64位">Ubuntu 18.04 64位：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">bash &lt;<span class="o">(</span>wget --no-check-certificate -qO- <span class="s1">&#39;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#39;</span><span class="o">)</span> -u 18.04 -v <span class="m">64</span> -a
+</code></pre></div><h2 id="三关于系统重装过程">三.关于系统重装过程</h2>
+<p>运行包含正确系统版本号的脚本后，新系统的安装会自动进行，无需人工干预。</p>
+<p>可能的三种情况：</p>
+<p>正常情况下10分钟左右就可以安装成功了，期间可以在VNC中观察安装过程：</p>
+<p>如果安装CentOS 7版本，会出现下图提示，表示不支持：</p>
+<p>如果输入了其它不支持或不存在的系统版本，则会出现下图提示，中止安装：</p>
+<p>重装系统后更改root密码<br>
+耐心等待系统安装成功后，出于安全考虑，建议立即更改默认密码。</p>
+<p>具体方法：</p>
+<p>1.使用Putty以上文提供的默认密码登录，输入以下命令：passwd root</p>
+<p>2.接下来会分两次要求输入新的密码，可以手动输入，也可以在其它位置复制一个密码，然后在Putty界面右键点击即可粘贴上去。</p>
+<p>注意：输入新密码时并不会直接显示出来，光标也不会移动，这是正常的。</p>
+<p>3.再次登录系统时，记得使用新的root密码。</p>
+<p>默认密码：</p>
+<p>MoeClub.org</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-12-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/49/" class="prev" rel="prev" title="ServerStatus-Hotaru探针安装时可能出现的问题及解决办法"><i class="fas fa-angle-left fa-fw"></i>ServerStatus-Hotaru探针安装时可能出现的问题及解决办法</a>
+            <a href="/51/" class="next" rel="next" title="3W多张COSPLAY图片，随机api">3W多张COSPLAY图片，随机api<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

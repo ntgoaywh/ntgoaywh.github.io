@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>以数指定年、月、日的日期打印出来 - Learning</title><meta name="Description" content=""><meta property="og:title" content="以数指定年、月、日的日期打印出来" />
+<meta property="og:description" content="months=[ &#39;Januray&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;, &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;, &#39;October&#39;, &#39;November&#39;, &#39;December&#39; ] endings=[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]&#43;17*[&#39;th&#39;]\ &#43;[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]&#43;7*[&#39;th&#39;]\ &#43;[&#39;st&#39;] year=input(&#39;Year:&#39;) month=input(&#39;Month(1-12):&#39;) day=input(&#39;Day(1-31):&#39;) month_number=int(month) day_number=int(day) month_name = months[month_number-1] ordinal=day&#43;endings[day_number-1] print(month_name&#43;&#39; &#39;&#43;ordinal&#43;&#39;,&#39;&#43;year)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ntgoaywh.github.io/python-index/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-02T14:49:24&#43;00:00" />
+<meta property="article:modified_time" content="2021-05-02T14:49:24&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="以数指定年、月、日的日期打印出来"/>
+<meta name="twitter:description" content="months=[ &#39;Januray&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;, &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;, &#39;October&#39;, &#39;November&#39;, &#39;December&#39; ] endings=[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]&#43;17*[&#39;th&#39;]\ &#43;[&#39;st&#39;,&#39;nd&#39;,&#39;rd&#39;]&#43;7*[&#39;th&#39;]\ &#43;[&#39;st&#39;] year=input(&#39;Year:&#39;) month=input(&#39;Month(1-12):&#39;) day=input(&#39;Day(1-31):&#39;) month_number=int(month) day_number=int(day) month_name = months[month_number-1] ordinal=day&#43;endings[day_number-1] print(month_name&#43;&#39; &#39;&#43;ordinal&#43;&#39;,&#39;&#43;year)"/>
+<meta name="application-name" content="Learning">
+<meta name="apple-mobile-web-app-title" content="Learning"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ntgoaywh.github.io/python-index/" /><link rel="prev" href="https://ntgoaywh.github.io/the-difference-between-supervised-learning-and-unsupervised/" /><link rel="next" href="https://ntgoaywh.github.io/github-proxy/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "以数指定年、月、日的日期打印出来",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ntgoaywh.github.io\/python-index\/"
+        },"genre": "posts","wordcount":  28 ,
+        "url": "https:\/\/ntgoaywh.github.io\/python-index\/","datePublished": "2021-05-02T14:49:24+00:00","dateModified": "2021-05-02T14:49:24+00:00","publisher": {
+            "@type": "Organization",
+            "name": "limttkx"},"author": {
+                "@type": "Person",
+                "name": "limttkx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Learning">Learning</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 归档 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Learning">Learning</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">归档</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">以数指定年、月、日的日期打印出来</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>limttkx</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E4%BB%A3%E7%A0%81%E5%BA%93/"><i class="far fa-folder fa-fw"></i>代码库</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-02">2021-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 28 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">months</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;Januray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;February&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;March&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;April&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;May&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;June&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;July&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;August&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;September&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;October&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;November&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;December&#39;</span>
+<span class="p">]</span>
+<span class="n">endings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">,</span><span class="s1">&#39;nd&#39;</span><span class="p">,</span><span class="s1">&#39;rd&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">17</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;th&#39;</span><span class="p">]</span>\
+    <span class="o">+</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">,</span><span class="s1">&#39;nd&#39;</span><span class="p">,</span><span class="s1">&#39;rd&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">7</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;th&#39;</span><span class="p">]</span>\
+    <span class="o">+</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">]</span>
+<span class="n">year</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Year:&#39;</span><span class="p">)</span>
+<span class="n">month</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Month(1-12):&#39;</span><span class="p">)</span>
+<span class="n">day</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Day(1-31):&#39;</span><span class="p">)</span>
+<span class="n">month_number</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">month</span><span class="p">)</span>
+<span class="n">day_number</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
+ 
+<span class="n">month_name</span> <span class="o">=</span> <span class="n">months</span><span class="p">[</span><span class="n">month_number</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ordinal</span><span class="o">=</span><span class="n">day</span><span class="o">+</span><span class="n">endings</span><span class="p">[</span><span class="n">day_number</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">month_name</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">ordinal</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="n">year</span><span class="p">)</span>
+</code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-05-02</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/the-difference-between-supervised-learning-and-unsupervised/" class="prev" rel="prev" title="The difference between Supervised Learning and Unsupervised Learning"><i class="fas fa-angle-left fa-fw"></i>The difference between Supervised Learning and Unsupervised Learning</a>
+            <a href="/github-proxy/" class="next" rel="next" title="如何提高国内访问GitHub的速度达到3MB/S以上（轻松解决）">如何提高国内访问GitHub的速度达到3MB/S以上（轻松解决）<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

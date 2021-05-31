@@ -1,0 +1,54 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>脚本合集 - 分类 - Learning</title>
+        <link>https://ntgoaywh.github.io/categories/%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86/</link>
+        <description>脚本合集 - 分类 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 30 May 2021 17:37:00 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/categories/%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86/" rel="self" type="application/rss+xml" /><item>
+    <title>Oracle甲骨文dd教程</title>
+    <link>https://ntgoaywh.github.io/oracle-dd/</link>
+    <pubDate>Sun, 30 May 2021 17:37:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/oracle-dd/</guid>
+    <description><![CDATA[前提：初始化版本是Canonical Ubuntu 16.04 把下面脚本扔进CLOUD-INIT即可，除了系统，其他不更改 #!/bin/bash echo root:Abc123456 |sudo chpasswd root sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config; sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config; sudo service]]></description>
+</item><item>
+    <title>(萌咖) 一键DD脚本CentOS/Debian/Ubuntu</title>
+    <link>https://ntgoaywh.github.io/50/</link>
+    <pubDate>Thu, 10 Dec 2020 00:03:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/50/</guid>
+    <description><![CDATA[<h2 id="一一键dd-linux系统的用途">一.一键DD Linux系统的用途</h2>
+<p>基本所有的VPS服务器商家，都会提供免费的Linux系统供安装，比如CentOS、Debian、Ubuntu等。那为什么还要使用一键DD脚本重装/更换系统呢？</p>
+<p>商家提供的系统版本有限，可能没有自己需要的版本。<br>
+商家的系统安装有自己不想要的服务，比如国内的阿里云盾（安骑士）。<br>
+商家的系统无法安装特定软件，比如很挑内核的锐速。<br>
+以上几种情况，一键DD脚本就可以为服务器更换一个纯净的系统，帮你解决问题。</p>]]></description>
+</item><item>
+    <title>ServerStatus-Hotaru探针安装时可能出现的问题及解决办法</title>
+    <link>https://ntgoaywh.github.io/49/</link>
+    <pubDate>Sun, 06 Dec 2020 23:28:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/49/</guid>
+    <description><![CDATA[一.Caddy解压失败或压缩文件错误 bash status.sh s 在服务端运行以上代码时，若直接选择由脚本自动配置HTTP服务，最终会出现这样的错误：Caddy解压]]></description>
+</item><item>
+    <title>常用VPS测试脚本整理</title>
+    <link>https://ntgoaywh.github.io/44/</link>
+    <pubDate>Wed, 02 Dec 2020 00:10:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/44/</guid>
+    <description><![CDATA[非开心版测速脚本(较准确) wget --no-check-certificate https://raw.githubusercontent.com/zzycwmx/CDN/master/superbench2.sh &amp;&amp; bash superbench2.sh 检测VPS的CPU、内存、负载、IO读写、机房带宽等 wget -qO- bench.sh | bash 三网测速脚本 bash &lt;(curl -Lso- https://git.io/superspeed) 路由测试脚本 bash &lt;(curl -sL mcnb.top/besttcp.sh)]]></description>
+</item><item>
+    <title>搭建VPS网页端测速</title>
+    <link>https://ntgoaywh.github.io/41/</link>
+    <pubDate>Sun, 29 Nov 2020 00:26:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/41/</guid>
+    <description><![CDATA[使用docker安装 先安装docker，若已安装可跳过 curl -sSL https://get.docker.com/ | sh systemctl start docker systemctl enable docker 拉取镜像 docker pull badapple9/speedtest-x 运行容器 docker run -d -p 9001:80 -it badapple9/speedtest-x 打开网页 你的IP：9001]]></description>
+</item><item>
+    <title>Linux系统下，一键安装Centos6-7、Debian7-10、Ubuntu14-18、Windows等</title>
+    <link>https://ntgoaywh.github.io/38/</link>
+    <pubDate>Wed, 25 Nov 2020 22:08:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/38/</guid>
+    <description><![CDATA[一.dd Ubuntu系统 wget -N --no-check-certificate https://raw.githubusercontent.com/veip007/dd/master/dd-od.sh &amp;&amp; chmod +x dd-od.sh &amp;&amp; ./dd-od.sh 或 wget -N --no-check-certificate https://raw.githubusercontent.com/veip007/dd/master/dd-gd.sh &amp;&amp; chmod +x dd-gd.sh &amp;&amp; ./dd-gd.sh （镜像文件位置不同） Ubuntu 14.04×64 用户名：root 密码：MoeClub]]></description>
+</item></channel>
+</rss>

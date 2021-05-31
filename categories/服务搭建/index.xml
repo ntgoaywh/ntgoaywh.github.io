@@ -1,0 +1,81 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>服务搭建 - 分类 - Learning</title>
+        <link>https://ntgoaywh.github.io/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</link>
+        <description>服务搭建 - 分类 - Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 06 May 2021 16:03:33 &#43;0000</lastBuildDate><atom:link href="https://ntgoaywh.github.io/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" rel="self" type="application/rss+xml" /><item>
+    <title>如何提高国内访问GitHub的速度达到3MB/S以上（轻松解决）</title>
+    <link>https://ntgoaywh.github.io/github-proxy/</link>
+    <pubDate>Thu, 06 May 2021 16:03:33 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/github-proxy/</guid>
+    <description><![CDATA[为什么GitHub下载速度这么慢？ GitHub，我们都知道是世界上最大的开源及私有软件项目的托管平台，全世界每天有海量优秀的开源软件在这里产]]></description>
+</item><item>
+    <title>给 Windows Terminal配置代理</title>
+    <link>https://ntgoaywh.github.io/windows-terminal-dai-li/</link>
+    <pubDate>Thu, 04 Feb 2021 16:13:40 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/windows-terminal-dai-li/</guid>
+    <description><![CDATA[前言 今天突然想到Windows Terminal也是可以走代理的，于是在网上查阅了相关资料，在这里分享下我所用的方法。 命令 有一个坑是，cmd，]]></description>
+</item><item>
+    <title>微软开发者E5续期教程</title>
+    <link>https://ntgoaywh.github.io/renew-office-e5/</link>
+    <pubDate>Tue, 02 Feb 2021 14:37:42 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/renew-office-e5/</guid>
+    <description><![CDATA[前言 微软开发者计划E5只有三个月的有效期，但是我们可以通过调用API的方式使自己的账号保持活跃，从而成功续期，以下我就来介绍一个Github]]></description>
+</item><item>
+    <title>用腾讯轻量搭建带WEB控制台的MC服务器</title>
+    <link>https://ntgoaywh.github.io/minecraft-build/</link>
+    <pubDate>Wed, 27 Jan 2021 15:55:07 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/minecraft-build/</guid>
+    <description><![CDATA[众所周知mc多好玩，大家都喜爱，可是守护进程有点麻烦，screen经常会有些问题，所以不如搞个面板，顺便也解决守护进程问题 （能不用手就不用手]]></description>
+</item><item>
+    <title>(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS</title>
+    <link>https://ntgoaywh.github.io/cloudflare-cdn/</link>
+    <pubDate>Tue, 26 Jan 2021 13:12:38 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/cloudflare-cdn/</guid>
+    <description><![CDATA[网站套CloudFlare自选ip节点教程！很多站长注册使用CloudFlare免费CDN加速网站全球访问速度，还带防御功能，隐藏服务器真实]]></description>
+</item><item>
+    <title>测试 VPS 本地连接最大速度 iperf3</title>
+    <link>https://ntgoaywh.github.io/speed-test-iperf3/</link>
+    <pubDate>Mon, 25 Jan 2021 11:35:41 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/speed-test-iperf3/</guid>
+    <description><![CDATA[大多 VPS 测速脚本使用 speedtest、fast.com 测速节点，很多时候不能真实反映本地连接速度，最直接方法还是从本地发起测试。有个 iperf3 工具可]]></description>
+</item><item>
+    <title>利用腾讯轻量服务器搭建FRP服务</title>
+    <link>https://ntgoaywh.github.io/frp/</link>
+    <pubDate>Mon, 25 Jan 2021 11:30:17 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/frp/</guid>
+    <description><![CDATA[在如今这个IPV4缺乏的年代，家庭宽带获取到公网IPV4相对比较困难，特别是移动用户，基本上就是默认不给公网IPV4，这时候，如果我们想要把]]></description>
+</item><item>
+    <title>一键PT脚本安装qBittorrent&#43;Deluge&#43;rTorrent&#43;Transmission</title>
+    <link>https://ntgoaywh.github.io/qbittorrent-deluge-rtorrent-transmission/</link>
+    <pubDate>Mon, 25 Jan 2021 11:21:57 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/qbittorrent-deluge-rtorrent-transmission/</guid>
+    <description><![CDATA[注意事项 本脚本只支持 x86_64 (amd64) 架构，其他架构都不支持。ARM 用户建议使用 QuickBox ARM 本脚本只在独服和 KVM 虚拟化的 VPS 下测试，OpenVZ、Xen 等其他虚拟化架]]></description>
+</item><item>
+    <title>【开源】CF Worker KV 短链接/短网址程序</title>
+    <link>https://ntgoaywh.github.io/cf-worker-kv-short-url/</link>
+    <pubDate>Thu, 10 Dec 2020 14:42:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/cf-worker-kv-short-url/</guid>
+    <description><![CDATA[很多时候网址过长不利于分享，将长网址转换短网址/短链接，缩短内容长度，会使得分享更加方便。 借助免费的Cloudflare Worker和前不久]]></description>
+</item><item>
+    <title>使用IPV6访问Google避免Google人机验证</title>
+    <link>https://ntgoaywh.github.io/43/</link>
+    <pubDate>Sun, 29 Nov 2020 22:11:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://ntgoaywh.github.io/43/</guid>
+    <description><![CDATA[<h2 id="一首先修改-etcsysctlconf-加入下面三行内容">一.首先修改 /etc/sysctl.conf ，加入下面三行内容</h2>
+<pre><code>net.ipv6.conf.all.disable_ipv6 = 0
+net.ipv6.conf.default.disable_ipv6 = 0
+net.ipv6.conf.lo.disable_ipv6 = 0
+</code></pre>]]></description>
+</item></channel>
+</rss>

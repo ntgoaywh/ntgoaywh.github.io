@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Deep Learning Notes - Learning</title><meta name="Description" content=""><meta property="og:title" content="Deep Learning Notes" />
+<meta property="og:description" content="Course 1: Neural Networks and Deep Learning Course 1: Neural Networks and Deep Learning Week 1: Introduction to Deep Learning Learning Objectives Introduction to Deep Learning What is a neural network Supervised learning with neural networks Why is deep learning taking off Week 2: Neural Networks Basics Learning Objectives Logistic Regression as a Neural Network Binary Classification Logistic Regression Logistic Regression Cost Function Gradient Descent Derivatives Computation Graph Derivatives with" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ntgoaywh.github.io/deep-learning-notes/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-24T07:40:19&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-24T07:40:19&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Deep Learning Notes"/>
+<meta name="twitter:description" content="Course 1: Neural Networks and Deep Learning Course 1: Neural Networks and Deep Learning Week 1: Introduction to Deep Learning Learning Objectives Introduction to Deep Learning What is a neural network Supervised learning with neural networks Why is deep learning taking off Week 2: Neural Networks Basics Learning Objectives Logistic Regression as a Neural Network Binary Classification Logistic Regression Logistic Regression Cost Function Gradient Descent Derivatives Computation Graph Derivatives with"/>
+<meta name="application-name" content="Learning">
+<meta name="apple-mobile-web-app-title" content="Learning"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ntgoaywh.github.io/deep-learning-notes/" /><link rel="prev" href="https://ntgoaywh.github.io/blog-da-jian/" /><link rel="next" href="https://ntgoaywh.github.io/asm-1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Deep Learning Notes",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ntgoaywh.github.io\/deep-learning-notes\/"
+        },"genre": "posts","wordcount":  3222 ,
+        "url": "https:\/\/ntgoaywh.github.io\/deep-learning-notes\/","datePublished": "2021-04-24T07:40:19+00:00","dateModified": "2021-04-24T07:40:19+00:00","publisher": {
+            "@type": "Organization",
+            "name": "limttkx"},"author": {
+                "@type": "Person",
+                "name": "limttkx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Learning">Learning</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 归档 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Learning">Learning</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">归档</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Deep Learning Notes</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>limttkx</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-24">2021-04-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3222 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#week-1-introduction-to-deep-learning">Week 1: Introduction to Deep Learning</a>
+      <ul>
+        <li><a href="#learning-objectives">Learning Objectives</a></li>
+        <li><a href="#introduction-to-deep-learning">Introduction to Deep Learning</a></li>
+      </ul>
+    </li>
+    <li><a href="#week-2-neural-networks-basics">Week 2: Neural Networks Basics</a>
+      <ul>
+        <li><a href="#learning-objectives-1">Learning Objectives</a></li>
+        <li><a href="#logistic-regression-as-a-neural-network">Logistic Regression as a Neural Network</a></li>
+        <li><a href="#python-and-vectorization">Python and Vectorization</a></li>
+      </ul>
+    </li>
+    <li><a href="#week-3-shallow-neural-networks">Week 3: Shallow Neural Networks</a>
+      <ul>
+        <li><a href="#learning-objectives-2">Learning Objectives</a></li>
+        <li><a href="#shallow-neural-network">Shallow Neural Network</a></li>
+      </ul>
+    </li>
+    <li><a href="#week-4-deep-neural-networks">Week 4: Deep Neural Networks</a>
+      <ul>
+        <li><a href="#learning-objectives-3">Learning Objectives</a></li>
+        <li><a href="#deep-neural-network">Deep Neural Network</a></li>
+        <li><a href="#what-does-this-have-to-do-with-the-brain">What does this have to do with the brain</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="course-1-neural-networks-and-deep-learning">Course 1: Neural Networks and Deep Learning</h1>
+<ul>
+<li>Course 1: Neural Networks and Deep Learning
+<ul>
+<li>Week 1: Introduction to Deep Learning
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#learning-objectives" target="_blank" rel="noopener noreffer">Learning Objectives</a></li>
+<li>Introduction to Deep Learning
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#what-is-a-neural-network" target="_blank" rel="noopener noreffer">What is a neural network</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#supervised-learning-with-neural-networks" target="_blank" rel="noopener noreffer">Supervised learning with neural networks</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#why-is-deep-learning-taking-off" target="_blank" rel="noopener noreffer">Why is deep learning taking off</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Week 2: Neural Networks Basics
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#learning-objectives-1" target="_blank" rel="noopener noreffer">Learning Objectives</a></li>
+<li>Logistic Regression as a Neural Network
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#binary-classification" target="_blank" rel="noopener noreffer">Binary Classification</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#logistic-regression" target="_blank" rel="noopener noreffer">Logistic Regression</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#logistic-regression-cost-function" target="_blank" rel="noopener noreffer">Logistic Regression Cost Function</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#gradient-descent" target="_blank" rel="noopener noreffer">Gradient Descent</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#derivatives" target="_blank" rel="noopener noreffer">Derivatives</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#computation-graph" target="_blank" rel="noopener noreffer">Computation Graph</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#derivatives-with-a-computation-graph" target="_blank" rel="noopener noreffer">Derivatives with a Computation Graph</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#logistic-regression-gradient-descent" target="_blank" rel="noopener noreffer">Logistic Regression Gradient Descent</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#gradient-descent-on-m-examples" target="_blank" rel="noopener noreffer">Gradient Descent on m Examples</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#derivation-of-dldz" target="_blank" rel="noopener noreffer">Derivation of dL/dz</a></li>
+</ul>
+</li>
+<li>Python and Vectorization
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#vectorization" target="_blank" rel="noopener noreffer">Vectorization</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#vectorizing-logistic-regression" target="_blank" rel="noopener noreffer">Vectorizing Logistic Regression</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#broadcasting-in-python" target="_blank" rel="noopener noreffer">Broadcasting in Python</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#a-note-on-pythonnumpy-vectors" target="_blank" rel="noopener noreffer">A note on python/numpy vectors</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#quick-tour-of-jupyteripython-notebooks" target="_blank" rel="noopener noreffer">Quick tour of Jupyter/iPython Notebooks</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#explanation-of-logistic-regression-cost-function-optional" target="_blank" rel="noopener noreffer">Explanation of logistic regression cost function (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Week 3: Shallow Neural Networks
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#learning-objectives-2" target="_blank" rel="noopener noreffer">Learning Objectives</a></li>
+<li>Shallow Neural Network
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#neural-networks-overview" target="_blank" rel="noopener noreffer">Neural Networks Overview</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#neural-network-representation" target="_blank" rel="noopener noreffer">Neural Network Representation</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#computing-a-neural-networks-output" target="_blank" rel="noopener noreffer">Computing a Neural Network’s Output</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#vectorizing-across-multiple-examples" target="_blank" rel="noopener noreffer">Vectorizing across multiple examples</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#activation-functions" target="_blank" rel="noopener noreffer">Activation functions</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#why-do-you-need-non-linear-activation-functions" target="_blank" rel="noopener noreffer">Why do you need non-linear activation functions</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#derivatives-of-activation-functions" target="_blank" rel="noopener noreffer">Derivatives of activation functions</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#gradient-descent-for-neural-networks" target="_blank" rel="noopener noreffer">Gradient descent for Neural Networks</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#random-initialization" target="_blank" rel="noopener noreffer">Random initialization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Week 4: Deep Neural Networks
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#learning-objectives-3" target="_blank" rel="noopener noreffer">Learning Objectives</a></li>
+<li>Deep Neural Network
+<ul>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#deep-l-layer-neural-network" target="_blank" rel="noopener noreffer">Deep L-layer neural network</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#forward-propagation-in-a-deep-network" target="_blank" rel="noopener noreffer">Forward Propagation in a deep network</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#getting-your-matrix-dimensions-right" target="_blank" rel="noopener noreffer">Getting your matrix dimensions right</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#why-deep-representations" target="_blank" rel="noopener noreffer">Why deep representations</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#building-blocks-of-deep-neural-networks" target="_blank" rel="noopener noreffer">Building blocks of deep neural networks</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#forward-and-backward-propagation" target="_blank" rel="noopener noreffer">Forward and Backward Propagation</a></li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#parameters-vs-hyperparameters" target="_blank" rel="noopener noreffer">Parameters vs Hyperparameters</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/readme.md#what-does-this-have-to-do-with-the-brain" target="_blank" rel="noopener noreffer">What does this have to do with the brain</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="week-1-introduction-to-deep-learning">Week 1: Introduction to Deep Learning</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Discuss the major trends driving the rise of deep learning</li>
+<li>Explain how deep learning is applied to <a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="noopener noreffer">supervised learning</a></li>
+<li>List the major categories of models (CNNs, RNNs, etc.), and when they should be applied</li>
+<li>Assess appropriate use cases for deep learning</li>
+</ul>
+<h3 id="introduction-to-deep-learning">Introduction to Deep Learning</h3>
+<h4 id="what-is-a-neural-network">What is a neural network</h4>
+<p>It is a powerful learning algorithm(算法) inspired by how the brain works. Here is a definition from <a href="https://www.mathworks.com/discovery/neural-network.html" target="_blank" rel="noopener noreffer">mathworks</a>:<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/neural-network.svg" target="_blank" rel="noopener noreffer"></a></p>
+<p><em>image source: <a href="https://www.mathworks.com/discovery/neural-network.html" target="_blank" rel="noopener noreffer">mathworks</a></em></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="supervised-learning-with-neural-networks">Supervised learning with neural networks</h4>
+<p>In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.</p>
+<p>Supervised learning problems are categorized into “regression（回归分析）” and “classification（分类）” problems(Statistical classification). In a regression problem, we are trying to predict results within a <strong>continuous output</strong>, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a <strong>discrete output</strong>. In other words, we are trying to map input variables into discrete categories.</p>
+<p><em>Examples of supervised learning applications</em>:<!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th>Input(X)</th>
+<th>Output(y)</th>
+<th>Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home features</td>
+<td>Price</td>
+<td>Real Estate</td>
+</tr>
+<tr>
+<td>Ad, user info</td>
+<td>Click on ad? (0/1)</td>
+<td>Online Advertising</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>Object (1,…,1000)</td>
+<td>Photo tagging</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Text transcript</td>
+<td>Speech recognition</td>
+</tr>
+<tr>
+<td>English</td>
+<td>Chinese</td>
+<td>Machine translation</td>
+</tr>
+<tr>
+<td>Image, Radar（雷达） info</td>
+<td>Position of other cars</td>
+<td>Autonomous driving</td>
+</tr>
+</tbody>
+</table>
+<p><em>Structured vs unstructured data</em></p>
+<ul>
+<li>Structured data refers to things that has a defined meaning such as price, age</li>
+<li>Unstructured data refers to thing like pixel, raw audio, text.</li>
+</ul>
+<h4 id="why-is-deep-learning-taking-off">Why is deep learning taking off</h4>
+<p>Deep learning is taking off due to a large amount of data available through the digitization of the society, faster computation and innovation in the development of neural network algorithm.</p>
+<p><em>Two things have to be considered to get to the high level of performance</em>:</p>
+<ol>
+<li>Being able to train a big enough neural network</li>
+<li>Huge amount of labeled data</li>
+</ol>
+<h2 id="week-2-neural-networks-basics">Week 2: Neural Networks Basics</h2>
+<h3 id="learning-objectives-1">Learning Objectives</h3>
+<ul>
+<li>Build a logistic regression model structured as a shallow neural network</li>
+<li>Build the general architecture of a learning algorithm, including parameter initialization, cost function and gradient calculation, and optimization implemetation (gradient descent)</li>
+<li>Implement computationally efficient and highly vectorized versions of models</li>
+<li>Compute derivatives for logistic regression, using a backpropagation mindset</li>
+<li>Use Numpy functions and Numpy matrix/vector operations</li>
+<li>Work with iPython Notebooks</li>
+<li>Implement vectorization across multiple training examples</li>
+</ul>
+<h3 id="logistic-regression-as-a-neural-network">Logistic Regression as a Neural Network</h3>
+<h4 id="binary-classification">Binary Classification</h4>
+<p>Week2 focuses on the basics of neural network programming, especially some important techniques, such as how to deal with m training examples in the computation and how to implement forward and backward propagation. To illustrate this process step by step, Andrew Ng took a lot of time explaining how Logistic regression is implemented for a binary classification, here a Cat vs. Non-Cat classification, which would take an image as an input and output a label to propagation whether this image is a cat (label 1) or not (label 0).</p>
+<p>An image is store in the computer in three separate matrices corresponding to the Red, Green, and Blue color channels of the image. The three matrices have the same size as the image, for example, the resolution of the cat image is 64 pixels x 64 pixels, the three matrices (RGB) are 64 by 64 each. To create a feature vector, x, the pixel intensity values will be “unroll” or “reshape” for each color. The dimension of the input feature vector x is <a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/n_x_64_64_3_12288.svg" target="_blank" rel="noopener noreffer"></a>.</p>
+<h4 id="logistic-regression">Logistic Regression</h4>
+<!-- raw HTML omitted -->
+<p>A detailed guide on <a href="https://machinelearningmastery.com/logistic-regression-for-machine-learning/" target="_blank" rel="noopener noreffer">Logistic Regression for Machine Learning</a> by Jason Brownlee is the best summary of this topic for data science engineers.</p>
+<p>Andrew Ng’s course on Logistic Regression here focuses more on LR as the simplest neural network, as its programming implementation is a good starting point for the deep neural networks that will be covered later.</p>
+<h4 id="logistic-regression-cost-function">Logistic Regression Cost Function</h4>
+<p>In Logistic regression, we want to train the parameters <code>w</code> and <code>b</code>, we need to define a cost function.</p>
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/lr-eqn.svg" target="_blank" rel="noopener noreffer"></a>, where <a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/lr-sigmoid.svg" target="_blank" rel="noopener noreffer"></a> Given <a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/lr-input.svg" target="_blank" rel="noopener noreffer"></a>, we want <a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/lr-target.svg" target="_blank" rel="noopener noreffer"></a></p>
+<p>The loss function measures the discrepancy between the prediction (𝑦̂(𝑖)) and the desired output (𝑦(𝑖)). In other words, the loss function computes the error for a single training example.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/lr-loss-function.png" target="_blank" rel="noopener noreffer"></a></p>
+<p>The cost function is the average of the loss function of the entire training set. We are going to find the parameters 𝑤 𝑎𝑛𝑑 𝑏 that minimize the overall cost function.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/lr-cost-function.png" target="_blank" rel="noopener noreffer"></a></p>
+<p>The loss function measures how well the model is doing on the single training example, whereas the cost function measures how well the parameters w and b are doing on the entire training set.</p>
+<h4 id="gradient-descent">Gradient Descent</h4>
+<p>As you go through any course on machine learning or deep learning, gradient descent the concept that comes up most often. It is used when training models, can be combined with every algorithm and is easy to understand and implement.</p>
+<p>The goal of the training model is to minimize the loss function, usually with randomly initialized parameters, and using a gradient descent method with the following main steps. Randomization of parameters initialization is not necessary in logistic regression (zero initialization is fine), but it is necessary in multilayer neural networks.</p>
+<ol>
+<li>Start calculating the cost and gradient for the given training set of (x,y) with the parameters w and b.</li>
+<li>update parameters w and b with pre-set learning rate: w_new =w_old – learning_rate * gradient_of_at(w_old) Repeat these steps until you reach the minimal values of cost function.</li>
+</ol>
+<p>The fancy image below comes from <a href="https://www.analyticsvidhya.com/blog/2020/10/what-does-gradient-descent-actually-mean/" target="_blank" rel="noopener noreffer">analytics vidhya</a>.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/gradient-descent.jpeg" target="_blank" rel="noopener noreffer"></a></p>
+<h4 id="derivatives">Derivatives</h4>
+<p>Derivatives are crucial in backpropagation during neural network training, which uses the concept of computational graphs and the chain rule of derivatives to make the computation of thousands of parameters in neural networks more efficient.</p>
+<h4 id="computation-graph">Computation Graph</h4>
+<p>A nice illustration by <a href="https://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="noopener noreffer">colah’s blog</a> can help better understand.</p>
+<p>Computational graphs are a nice way to think about mathematical expressions. For example, consider the expression e=(a+b)∗(b+1). There are three operations: two additions and one multiplication. To help us talk about this, let’s introduce two intermediary variables, c and d so that every function’s output has a variable. We now have:</p>
+<!-- raw HTML omitted -->
+<p>To create a computational graph, we make each of these operations, along with the input variables, into nodes. When one node’s value is the input to another node, an arrow goes from one to another.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/tree-def.png" target="_blank" rel="noopener noreffer"></a></p>
+<h4 id="derivatives-with-a-computation-graph">Derivatives with a Computation Graph</h4>
+<p>If one wants to understand derivatives in a computational graph, the key is to understand derivatives on the edges. If a directly affects c, then we want to know how it affects c. If a changes a little bit, how does c change? We call this the partial derivative of c with respect to a.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/tree-eval-derivs.png" target="_blank" rel="noopener noreffer"></a></p>
+<h4 id="logistic-regression-gradient-descent">Logistic Regression Gradient Descent</h4>
+<p>Andrew did logistic regreesion gradient descent computation using the computation graph in order to get us familiar with computation graph ideas for neural networks.</p>
+<h4 id="gradient-descent-on-m-examples">Gradient Descent on m Examples</h4>
+<p>The cost function is computed as an average of the <code>m</code> individual loss values, the gradient with respect to each parameter should also be calculated as the mean of the <code>m</code> gradient values on each example.</p>
+<p>The calculattion process can be done in a loop through m examples.</p>
+<!-- raw HTML omitted -->
+<p>After gradient computation, we can update parameters with a learning rate <code>alpha</code>.</p>
+<!-- raw HTML omitted -->
+<p>As you can see above, to update parameters one step, we have to go throught all the <code>m</code> examples. This will be mentioned again in later videos. Stay tuned!</p>
+<h4 id="derivation-of-dldz">Derivation of dL/dz</h4>
+<p>You may be wondering why <code>dz=a-y</code> in the above code is calculated this way and where it comes from. Here is a <a href="https://www.coursera.org/learn/neural-networks-deep-learning/discussions/weeks/2/threads/ysF-gYfISSGBfoGHyLkhYg" target="_blank" rel="noopener noreffer">detailed derivation process of dl/dz</a> on discussion forum.</p>
+<h3 id="python-and-vectorization">Python and Vectorization</h3>
+<h4 id="vectorization">Vectorization</h4>
+<p>Both GPU and CPU have parallelization instructions. They’re sometimes called SIMD instructions, which stands for a single instruction multiple data. The rule of thumb to remember is whenever possible avoid using explicit four loops.</p>
+<h4 id="vectorizing-logistic-regression">Vectorizing Logistic Regression</h4>
+<p>If we stack all the <code>m</code> examples of <code>x</code> we have a input matrix <code>X</code> with each column representing an example. So by the builtin vectorization of numpy we can simplify the above gradient descent calculation with a few lines of code which can boost the computational efficiency definitely.</p>
+<!-- raw HTML omitted -->
+<p>Update parameters:</p>
+<!-- raw HTML omitted -->
+<h4 id="broadcasting-in-python">Broadcasting in Python</h4>
+<p>The term broadcasting describes how numpy treats arrays with different shapes during arithmetic operations. Subject to certain constraints, the smaller array is “broadcast” across the larger array so that they have compatible shapes. Broadcasting provides a means of vectorizing array operations so that looping occurs in C instead of Python. More detailed examples on <a href="https://numpy.org/doc/stable/user/theory.broadcasting.html#array-broadcasting-in-numpy" target="_blank" rel="noopener noreffer">numpy.org</a>.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/theory.broadcast_2.gif" target="_blank" rel="noopener noreffer"></a></p>
+<h4 id="a-note-on-pythonnumpy-vectors">A note on python/numpy vectors</h4>
+<p>Do not use rank 1 arrays:</p>
+<!-- raw HTML omitted -->
+<p>Instead, we should use these:</p>
+<!-- raw HTML omitted -->
+<p>Or, just reshape the first case if necessary:</p>
+<!-- raw HTML omitted -->
+<h4 id="quick-tour-of-jupyteripython-notebooks">Quick tour of Jupyter/iPython Notebooks</h4>
+<p>The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.</p>
+<p>JupyterLab is a web-based interactive development environment for Jupyter notebooks, code, and data. JupyterLab is flexible: configure and arrange the user interface to support a wide range of workflows in data science, scientific computing, and machine learning. JupyterLab is extensible and modular: write plugins that add new components and integrate with existing ones.</p>
+<p>See <a href="https://jupyter.org/" target="_blank" rel="noopener noreffer">jupyter.org</a></p>
+<!-- raw HTML omitted -->
+<p>To open jupyter lab, run</p>
+<!-- raw HTML omitted -->
+<h4 id="explanation-of-logistic-regression-cost-function-optional">Explanation of logistic regression cost function (optional)</h4>
+<p>But so to summarize, by minimizing this cost function J(w,b) we’re really carrying out maximum likelihood estimation with the logistic regression model because minimizing the loss corresponds to maximizing the log of the probability.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/prob-conditional.svg" target="_blank" rel="noopener noreffer"></a><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/prob-cost.svg" target="_blank" rel="noopener noreffer"></a></p>
+<h2 id="week-3-shallow-neural-networks">Week 3: Shallow Neural Networks</h2>
+<h3 id="learning-objectives-2">Learning Objectives</h3>
+<ul>
+<li>Describe hidden units and hidden layers</li>
+<li>Use units with a non-linear activation function, such as tanh</li>
+<li>Implement forward and backward propagation</li>
+<li>Apply random initialization to your neural network</li>
+<li>Increase fluency in Deep Learning notations and Neural Network Representations</li>
+<li>Implement a 2-class classification neural network with a single hidden layer</li>
+</ul>
+<h3 id="shallow-neural-network">Shallow Neural Network</h3>
+<h4 id="neural-networks-overview">Neural Networks Overview</h4>
+<p>This is a simple 2-layer neural network.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/neural-network-2-layer.png" target="_blank" rel="noopener noreffer"></a></p>
+<p>Using computation graph, the forward computation process is like this.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/neural-network-2-layer-forward.png" target="_blank" rel="noopener noreffer"></a></p>
+<h4 id="neural-network-representation">Neural Network Representation</h4>
+<p>A neural network consists of three types of layers: input layer, hidden layer and output layer. Input layer is not counted in the number of layers of one neural network. When we talk about training a neural network, basically we are training parameters associated with the hidden layers and the output layer.</p>
+<ul>
+<li>Input layer: input features (x1, x2, x3, …) stack up vertically</li>
+<li>Hidden layer(s): values for the nodes are not observed</li>
+<li>Output layer: responsilble for generating the predicted value<!-- raw HTML omitted --></li>
+</ul>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/nn-representation.png" target="_blank" rel="noopener noreffer"></a></p>
+<h4 id="computing-a-neural-network8217s-outputfigure-classwp-block-image">Computing a Neural Network’s Output<!-- raw HTML omitted --></h4>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/nn-computation.png" target="_blank" rel="noopener noreffer"></a></p>
+<p>In the above example, <code>z[1]</code> is the result of linear computation of the input values and the parameters of the hidden layer and <code>a[1]</code> is the activation as a sigmoid function of <code>z[1]</code>.</p>
+<p>Generally, in a two-layer neural network, if we have <code>nx</code> features of input <code>x</code> and <code>n1</code> neurons of hidden layer and one output value, we have the following dimensions of each variable. Specifically, we have <code>nx=3, n1=4</code> in the above network.<!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>shape</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>(nx,1)</code></td>
+<td>input value with <code>nx</code> features</td>
+</tr>
+<tr>
+<td><code>W[1]</code></td>
+<td><code>(n1,nx)</code></td>
+<td>weight matrix of first layer, i.e., hidden layer</td>
+</tr>
+<tr>
+<td><code>b[1]</code></td>
+<td><code>(n1,1)</code></td>
+<td>bias terms of hidden layer</td>
+</tr>
+<tr>
+<td><code>z[1]</code></td>
+<td><code>(n1,1)</code></td>
+<td>result of linear computation of hidden layer</td>
+</tr>
+<tr>
+<td><code>a[1]</code></td>
+<td><code>(n1,1)</code></td>
+<td>activation of hidden layer</td>
+</tr>
+<tr>
+<td><code>W[2]</code></td>
+<td><code>(1,n1)</code></td>
+<td>weight matrix of second layer, i.e., output layer here</td>
+</tr>
+<tr>
+<td><code>b[2]</code></td>
+<td><code>(1,1)</code></td>
+<td>bias terms of output layer</td>
+</tr>
+<tr>
+<td><code>z[2]</code></td>
+<td><code>(1,1)</code></td>
+<td>result of linear computation of output layer</td>
+</tr>
+<tr>
+<td><code>a[2]</code></td>
+<td><code>(1,1)</code></td>
+<td>activation of output layer, i.e., output value</td>
+</tr>
+</tbody>
+</table>
+<p>We should compute <code>z[1], a[1], z[2], a[2]</code> for each example <code>i</code> of <code>m</code> examples:</p>
+<!-- raw HTML omitted -->
+<h4 id="vectorizing-across-multiple-examples">Vectorizing across multiple examples</h4>
+<p>Just as we have already been familiar with vectorization and broadcasting in the logistic regression, we can also apply the same method to the neural networks training. Inevitably, we have to go through the <code>m</code> examples of input values in the process of computation. Stacking them together is good idea. So we have the following vectorizing variables with only small differences as before.<!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>shape</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X</code></td>
+<td><code>(nx,m)</code></td>
+<td>input values with <code>nx</code> features</td>
+</tr>
+<tr>
+<td><code>W[1]</code></td>
+<td><code>(n1,nx)</code></td>
+<td>weight matrix of first layer, i.e., hidden layer</td>
+</tr>
+<tr>
+<td><code>b[1]</code></td>
+<td><code>(n1,1)</code></td>
+<td>bias terms of hidden layer</td>
+</tr>
+<tr>
+<td><code>Z[1]</code></td>
+<td><code>(n1,m)</code></td>
+<td>results of linear computation of hidden layer</td>
+</tr>
+<tr>
+<td><code>A[1]</code></td>
+<td><code>(n1,m)</code></td>
+<td>activations of hidden layer</td>
+</tr>
+<tr>
+<td><code>W[2]</code></td>
+<td><code>(1,n1)</code></td>
+<td>weight matrix of second layer, i.e., output layer here</td>
+</tr>
+<tr>
+<td><code>b[2]</code></td>
+<td><code>(1,1)</code></td>
+<td>bias terms of output layer</td>
+</tr>
+<tr>
+<td><code>Z[2]</code></td>
+<td><code>(1,1)</code></td>
+<td>results of linear computation of output layer</td>
+</tr>
+<tr>
+<td><code>A[2]</code></td>
+<td><code>(1,1)</code></td>
+<td>activations of output layer, i.e., output value</td>
+</tr>
+</tbody>
+</table>
+<p>Now we can compute <code>Z[1], A[1], Z[2], A[2]</code> all at once.</p>
+<!-- raw HTML omitted -->
+<h4 id="activation-functions">Activation functions</h4>
+<p>So far, we know that a non-linear function is applied in the output step of each layer. Actually there are several common activation functions which are also popular.<!-- raw HTML omitted -->[</p>
+<!-- raw HTML omitted -->
+<h4 id="why-do-you-need-non-linear-activation-functions">Why do you need non-linear activation functions</h4>
+<!-- raw HTML omitted -->
+<p>A good explanation on <a href="https://stackoverflow.com/questions/9782071/why-must-a-nonlinear-activation-function-be-used-in-a-backpropagation-neural-net" target="_blank" rel="noopener noreffer">Stack Overflow</a>.</p>
+<h4 id="derivatives-of-activation-functionsfigure-classwp-block-image">Derivatives of activation functions<!-- raw HTML omitted -->[</h4>
+<!-- raw HTML omitted -->
+<h4 id="gradient-descent-for-neural-networks">Gradient descent for Neural Networks</h4>
+<p>Again we will have a single hidden layer in our neural network, this section focuses on the equations we need to implement in order to get back-propagation or to get gradient descent working. Suppose we have nx input features, n1 hidden units and n2 output units in our examples. In the previous vectorization section we have n2 equals one. Here we will have a more general representation in order to give ourselves a smoother transition to the next week of the course.</p>
+<p><em>Variables</em>:<!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>shape</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X</code></td>
+<td><code>(nx,m)</code></td>
+<td>input values with <code>nx</code> features</td>
+</tr>
+<tr>
+<td><code>Z[1]</code></td>
+<td><code>(n1,m)</code></td>
+<td>results of linear computation of hidden layer</td>
+</tr>
+<tr>
+<td><code>A[1]</code></td>
+<td><code>(n1,m)</code></td>
+<td>activations of hidden layer</td>
+</tr>
+<tr>
+<td><code>Z[2]</code></td>
+<td><code>(n2,1)</code></td>
+<td>results of linear computation of output layer</td>
+</tr>
+<tr>
+<td><code>A[2]</code></td>
+<td><code>(n2,1)</code></td>
+<td>activations of output layer, i.e., output value</td>
+</tr>
+</tbody>
+</table>
+<p><em>Parameters</em>:<!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>shape</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W[1]</code></td>
+<td><code>(n1,nx)</code></td>
+<td>weight matrix of first layer, i.e., hidden layer</td>
+</tr>
+<tr>
+<td><code>b[1]</code></td>
+<td><code>(n1,1)</code></td>
+<td>bias terms of hidden layer</td>
+</tr>
+<tr>
+<td><code>W[2]</code></td>
+<td><code>(n2,n1)</code></td>
+<td>weight matrix of second layer, i.e., output layer here</td>
+</tr>
+<tr>
+<td><code>b[2]</code></td>
+<td><code>(n2,1)</code></td>
+<td>bias terms of output layer</td>
+</tr>
+</tbody>
+</table>
+<p><em>Forward propagation</em> computes all the variable values of each layer, which will also be used in the backpropagation computation.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><em>Backpropagation</em> computes the derivatives of parameters by the chain rule.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><em>Repeat</em> forward propagation and backpropagation a lot of times until the parameters look like they’re converging.</p>
+<h4 id="random-initialization">Random initialization</h4>
+<p>Initialization of parameters:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><em>Why randomized initialization?</em></p>
+<p>In order to break the symmetry for hidden layers.</p>
+<!-- raw HTML omitted -->
+<p>See some interesting discussion on <a href="https://stackoverflow.com/questions/20027598/why-should-weights-of-neural-networks-be-initialized-to-random-numbers" target="_blank" rel="noopener noreffer">Stack Overflow</a>.</p>
+<p><em>Why small numbers?</em></p>
+<p>This is for sigmoid or tanh activation function. If weight parameters are initially large, we are more likely to get large values of <code>z</code> calculated by <code>z=wx+b</code>. If we check this in the graph of sigmoid(tanh) function, we can see the slope in large <code>z</code> is very close to zero, which would slow down the learning process since parameters are updated by only a very small amount each time.</p>
+<h2 id="week-4-deep-neural-networks">Week 4: Deep Neural Networks</h2>
+<h3 id="learning-objectives-3">Learning Objectives</h3>
+<ul>
+<li>Describe the successive block structure of a deep neural network</li>
+<li>Build a deep L-layer neural network</li>
+<li>Analyze matrix and vector dimensions to check neural network implementations</li>
+<li>Use a cache to pass information from forward to back propagation</li>
+<li>Explain the role of hyperparameters in deep learning</li>
+</ul>
+<h3 id="deep-neural-network">Deep Neural Network</h3>
+<h4 id="deep-l-layer-neural-network">Deep L-layer neural network</h4>
+<p>Technically logistic regression is a 1-layer neural network. Deep neural networks, with more layers, can learn functions that shallower models are often unable to.</p>
+<p>Here <code>L</code> denotes the number of layers in a deep neural network. Some notations:<!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th>notation</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n[0]</code></td>
+<td>number of neurons in the input layer</td>
+</tr>
+<tr>
+<td><code>n[l]</code></td>
+<td>number of neurons in the <code>lth</code> layer, <code>l</code> from 1 to L</td>
+</tr>
+<tr>
+<td><code>W[l]</code></td>
+<td>weights of the l-layer of shape <code>(n[l], n[l-1])</code></td>
+</tr>
+<tr>
+<td><code>b[l]</code></td>
+<td>bias term of the l-layer of shape <code>(n[l], 1)</code></td>
+</tr>
+<tr>
+<td><code>Z[l]</code></td>
+<td>affine result of the l-layer of shape <code>(n[l], m)</code>, <code>Z[l]=W[l]A[l-1]+b[l]</code></td>
+</tr>
+<tr>
+<td><code>g[l]</code></td>
+<td>activation function of the l-layer</td>
+</tr>
+<tr>
+<td><code>A[l]</code></td>
+<td>activation output of the l-layer of shape <code>(n[l], m)</code>, <code>A[l]=g[l](Z[l])</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="forward-propagation-in-a-deep-network">Forward Propagation in a deep network</h4>
+<p>With <code>A[0]=X</code>, forward propagation is generalized as:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><em>Backpropagation</em> computes the derivatives of parameters by the chain rule.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="getting-your-matrix-dimensions-rightfigure-classwp-block-table">Getting your matrix dimensions right<!-- raw HTML omitted --></h4>
+<table>
+<thead>
+<tr>
+<th>matrix</th>
+<th>dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W[l]</code></td>
+<td><code>(n[l], n[l-1])</code></td>
+</tr>
+<tr>
+<td><code>b[l]</code></td>
+<td><code>(n[l], 1)</code></td>
+</tr>
+<tr>
+<td><code>Z[l]</code></td>
+<td><code>(n[l], m)</code></td>
+</tr>
+<tr>
+<td><code>A[l]</code></td>
+<td><code>(n[l], m)</code></td>
+</tr>
+<tr>
+<td><code>dW[l]</code></td>
+<td><code>(n[l], n[l-1])</code></td>
+</tr>
+<tr>
+<td><code>db[l]</code></td>
+<td><code>(n[l], 1)</code></td>
+</tr>
+<tr>
+<td><code>dZ[l]</code></td>
+<td><code>(n[l], m)</code></td>
+</tr>
+<tr>
+<td><code>dA[l]</code></td>
+<td><code>(n[l], m)</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="why-deep-representations">Why deep representations</h4>
+<ul>
+<li>Deep neural network with multiple hidden layers might be able to have the earlier layers learn lower level simple features and then have the later deeper layers then put together the simpler things it’s detected in order to detect more complex things like recognize specific words or even phrases or sentences.</li>
+<li>If there aren’t enough hidden layers, then we might require exponentially more hidden units to compute in shallower networks.</li>
+</ul>
+<h4 id="building-blocks-of-deep-neural-networksfigure-classwp-block-image">Building blocks of deep neural networks<!-- raw HTML omitted --></h4>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/nn_frame.png" target="_blank" rel="noopener noreffer"></a></p>
+<p><em>Implementation steps</em>:</p>
+<ol>
+<li>Initialize parameters / Define hyperparameters</li>
+<li>Loop for num_iterations:<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+</li>
+</ol>
+<pre><code>&lt;/ol&gt;
+</code></pre>
+<ol start="3">
+<li>Use trained parameters to predict labels</li>
+</ol>
+<h4 id="forward-and-backward-propagation">Forward and Backward Propagation</h4>
+<p>In the algorithm implementation, outputting intermediate values as caches (basically <code>Z</code> and <code>A</code>) of each forward step is crucial for backward computation.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><a href="https://github.com/lijqhs/deeplearning-notes/blob/main/C1-Neural-Networks-and-Deep-Learning/img/backprop_flow.png" target="_blank" rel="noopener noreffer"></a></p>
+<h4 id="parameters-vs-hyperparameters">Parameters vs Hyperparameters</h4>
+<p><em>Parameters</em>:</p>
+<ul>
+<li>weight matrices <code>W</code> of each layer</li>
+<li>bias terms <code>b</code> of each layer</li>
+</ul>
+<p><em>Hyper parameters</em>:</p>
+<ul>
+<li>number of hidden units <code>n[l]</code></li>
+<li>learning rate</li>
+<li>number of iteration</li>
+<li>number of layers <code>L</code></li>
+<li>choice of activation functions</li>
+</ul>
+<h3 id="what-does-this-have-to-do-with-the-brain">What does this have to do with the brain</h3>
+<p>About this topic, I think the following Andrew’s explanation is the best summary:</p>
+<!-- raw HTML omitted -->
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-04-24</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/blog-da-jian/" class="prev" rel="prev" title="从零开始搭建一个属于自己的博客(纯小白教程)"><i class="fas fa-angle-left fa-fw"></i>从零开始搭建一个属于自己的博客(纯小白教程)</a>
+            <a href="/asm-1/" class="next" rel="next" title="汇编语言程序设计：用户输入‘1’时显示数字0~9，输入‘2’时显示学号，其他输入时程序退出">汇编语言程序设计：用户输入‘1’时显示数字0~9，输入‘2’时显示学号，其他输入时程序退出<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
