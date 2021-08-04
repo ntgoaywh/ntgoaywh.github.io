@@ -182,87 +182,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/08/03/firstPage-md/" target="_self">
-          firstPage.md
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/03/firstPage-md/" target="_self">
-          
-          
-            
-          
-          我的日常
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-03 16:41" pubdate>
-              2021-08-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/daily/">daily</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/03/hello-world/" target="_self">
-          Hello World
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/03/hello-world/" target="_self">
-          
-          
-            
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-03 16:23" pubdate>
-              2021-08-03
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/07/22/picgo-image/" target="_self">
           利用Picgo和GitHub搭建图床
         </a>
@@ -607,6 +526,107 @@ There’s a sci
             <i class="iconfont icon-date"></i>
             <time datetime="2021-04-28 19:53" pubdate>
               2021-04-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/LInux/">LInux</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/28/ubuntu-anaconda/" target="_self">
+          Ubuntu安装Anaconda时出现的一些问题
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/28/ubuntu-anaconda/" target="_self">
+          
+          
+            
+          
+          今天给电脑安装了Ubuntu，在给Ubuntu安装Anaconda后，在终端输入conda可检测Anaconda是否成功安装，若提示没有该命令，那么需要输入source ~/.bashrc 来更新环境变量，如果发现这样还是没用，那么需要添加环境变量，
+编辑~/.bashrc文件，在最后面加上
+1export PATH=/home/limttkx/anaconda3/bin:$PATH
+
+
+保存退出
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-28 17:02" pubdate>
+              2021-04-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/LInux/">LInux</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/27/ubuntu-dl-google-com-80/" target="_self">
+          Ubuntu中出现无法连接dl.google.com:80
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/27/ubuntu-dl-google-com-80/" target="_self">
+          
+          
+            
+          
+          系统环境Ubuntu 20.04
+问题描述执行
+1sudo apt-get update
+
+命令时，发现出现以下错误：
+1Could not connect to dl.google.com:80 (6.6.6.6), connection timed out
+
+解决方法这里通过修改/etc/hosts文件来解决这个问题，先输入
+1vim /etc/hosts
+
+在hosts文件下面添加一下内容：
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-27 00:09" pubdate>
+              2021-04-27
             </time>
           </div>
         
