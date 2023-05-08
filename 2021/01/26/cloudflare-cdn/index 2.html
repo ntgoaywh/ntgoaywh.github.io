@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-26 21:12" pubdate>
+        2021年1月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">(转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS</h1>
+            
+            <div class="markdown-body">
+              <p>网站套CloudFlare自选ip节点教程！很多站长注册使用CloudFlare免费CDN加速网站全球访问速度，还带防御功能，隐藏服务器真实IP。但是CF自动分配的IP比较慢。所以我们利用CloudFlare Partner 和Dnspod来自定义节点优化加速效果。</p>
+<h2 id="使用CFP，CNANE方式接入CF"><a href="#使用CFP，CNANE方式接入CF" class="headerlink" title="使用CFP，CNANE方式接入CF"></a>使用CFP，CNANE方式接入CF</h2><p>CFP是指Cloudflare Partner，第三方合作伙伴。如果在Cloudflare官网添加网站，必须把域名的NS地址改成CF官方的。使用CFP的话可以通过CNAME方式接入CF，然后自选IP。</p>
+<p>先到Cloudflare.com注册一个账号。本文以笨牛网CFP面板为例，到笨牛网CFP面板： <a target="_blank" rel="noopener" href="https://cdn.bnxb.com/">https://cdn.bnxb.com</a> 直接用CF账号登录，笨牛网是汉化的CFP设置面板，网站CDN加速其实是Cloudflare官方提供。</p>
+<p>登录后，如下图：域名接入—添加域名：比如 主域名：pigji.com 子域名：<a target="_blank" rel="noopener" href="http://www.pigji.com/">www.pigji.com</a><br><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxb2.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>然后点击菜单 ：域名列表，就可以看到刚刚添加的域名呢。<br><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxb3.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>点击域名进入下图所示界面，点击 解析设置，可以看到域名原本的A记录解析。强调：全部删除重新添加自己需要的A记录。回源地址就是你网站服务器主机的IP地址<br><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxb4.png" srcset="/img/loading.gif" lazyload alt="img"><br>添加完成，页面下方会给出Cloudflare提供的CNAME记录值。</p>
+<p>然后我们就需要到DNSPOD添加CNAME记录呢。</p>
+<h2 id="DNSPOD解析准备"><a href="#DNSPOD解析准备" class="headerlink" title="DNSPOD解析准备"></a>DNSPOD解析准备</h2><p>不是强制用Dnspod.cn，只要可以分国内、国外线路解析域名的DNS服务商就行，比如 华为DNS，DNS.com等。本文以DNSPOD为例。</p>
+<p>假如域名在国外注册，登录域名管理后台，修改域名NS地址为dnspod的NS地址，如下图：<br><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxbgains.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>然后回到DNSPOD添加你的域名就行，这样你的域名的解析权就转移到DNSPOD来了。<br>然后我们按CFP提供的值，添加CNAME记录，如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxb7.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="回到CFP面板设置相关参数"><a href="#回到CFP面板设置相关参数" class="headerlink" title="回到CFP面板设置相关参数"></a>回到CFP面板设置相关参数</h2><p>回到笨牛CFP面板这边，点击：主要设置，开始设置CloudFlare的加速与防御功能，如下图：<br><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxb5.png" srcset="/img/loading.gif" lazyload alt="img"><br>如果是静态网站可以全站缓存，如果是WP，DISCUZ就按上图我这样的来吧。</p>
+<p>还有防火墙：IP黑名单、IP白名单，UA屏蔽、防CC等功能，自行探索。高级设置懂的就按需设置，不懂的默认就行。</p>
+<p>然后去 ping.chinaz.com检测一下，看看自己域名的解析IP是不是变成Cloudflare的呢。<br>这样的好处就是你的真实IP隐藏起来了。</p>
+<h2 id="最重要的-自选节点IP"><a href="#最重要的-自选节点IP" class="headerlink" title="最重要的 自选节点IP"></a>最重要的 自选节点IP</h2><p>一旦你成功套上cloudflare后，下一步你就可以利用DNSPOD分线路解析的功能开始自选IP。<br>默认线路是 CF的CNAME记录，不要修改。<br>然后我们添加境内线路，和移动线路的A记录<br>等于境内（电信联通）+移动，自定义IP，如下图<br><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxb6.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>哪些Cloudflare的节点IP适合国内用户，自己去寻找呢，下方有推荐部分IP， 也有提供CF的所有节点IP段。</p>
+<h2 id="推荐节点IP，有可能失效"><a href="#推荐节点IP，有可能失效" class="headerlink" title="推荐节点IP，有可能失效"></a>推荐节点IP，有可能失效</h2><p><strong>电信推荐节点：洛杉矶 圣何塞</strong><br>104.16.160.1-104.16.160.254<br>104.19.150.1-104.19.150.254</p>
+<p><strong>电信推荐节点 CF与百度合作</strong><br>162.159.208.4-162.159.208.103<br>162.159.209.4-162.159.209.103<br>162.159.210.4-162.159.210.103<br>162.159.211.4-162.159.211.103</p>
+<p><strong>联通推荐节点</strong><br>联通不好找，随电信的IP吧<br>104.19.150.1-104.19.150.254</p>
+<p><strong>移动推荐节点：走香港</strong><br>141.101.115.1 - 141.101.115.254<br>172.64.32.1 - 172.64.32.254<br>198.41.214.1 - 198.41.214.254<br>104.25.176.1 - 104.25.176.254<br>104.18.177.1 - 104.18.177.254</p>
+<p><strong>其它推荐节点</strong><br>104.23.128.14<br>104.22.32.14<br>104.24.32.14<br>172.67.96.14<br>198.41.208.14</p>
+<p>注意：移动部分地区，CF节点被运营商阻断，导致网站有时无法访问。如果出现移动线路无法访问，可把移动线路解析到： 1.0.0.1</p>
+<h2 id="来自网友的测试cloudflare优秀IP"><a href="#来自网友的测试cloudflare优秀IP" class="headerlink" title="来自网友的测试cloudflare优秀IP"></a>来自网友的测试cloudflare优秀IP</h2><p>网友测试地点是长三角地区，时间为傍晚，不同地区和时间测试有差异。</p>
+<h5 id="电信"><a href="#电信" class="headerlink" title="电信"></a>电信</h5><p>大多数都是走 LAX洛杉矶<br>已知的例外：<br>104.16.32.0 - 104.16.63.255 SJC<br>104.16.144.0 - 104.16.159.255 SJC<br>104.18.16.0 - 104.18.31.255 SJC<br>103.21.244.0/24 FRA 或 DUS<br>162.159.36.0/24 SJC<br>162.159.46.0/24 SJC<br>162.159.128.0 - 162.159.200.0 AMS 、FRA 、LHR<br>198.41.211.0/24 LHR</p>
+<p>不同 IP 的下载速率差异较大，中位数为 150KB/s<br>顺便一提，测试中只有电信 4G 的 1.1.1.0/24 是不通的</p>
+<h5 id="联通"><a href="#联通" class="headerlink" title="联通"></a>联通</h5><p>大多数可访问段来自 LAX洛杉矶</p>
+<p>已知的例外：<br>104.16.32.0 - 104.16.63.255 SJC<br>104.17.0.0 - 104.17.15.255 SJC<br>104.19.144.0 - 104.19.159.255 SJC<br>104.20.0.0/16 SJC<br>104.22.0.0 - 104.22.63.255 SJC<br>104.22.64.0 - 104.22.79.255 FRA<br>104.23.96.0 - 104.23.143.255 SJC<br>104.24.0.0/16 MUC 、SJC 、LAX<br>104.26.0.0/16 SJC<br>104.27.0.0/16 MUC 、SJC 、SEA 、FRA<br>172.67.0.0/16 SJC 、FRA 、LAX<br>103.21.244.0/24 SJC<br>141.101.113.0/24 SJC<br>162.159.36.0/24 SJC<br>162.159.46.0/24 SJC<br>162.159.160.0/24 LHR<br>162.159.224.0 - 162.159.239.0 MUC</p>
+<p>不同 IP 的下载速率差异较小，中位数为 250KB/s，SJC 、MUC 平均较快</p>
+<h5 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h5><p>可访问段来自的地域比较零散</p>
+<p>1.0.0.0/24 LAX<br>1.1.1.0/24 LAX</p>
+<p>104.16.0.0/12 大多数为 LAX 、SJC 交替出现<br>在此基础上，还会参杂有：<br>104.16.0.0/16 HKG 、SEA<br>104.17.0.0/16 HKG 、SEA<br>104.18.0.0/16 FRA 、HKG 、SEA<br>104.19.0.0/16 HKG<br>104.20.0.0/16 SIN<br>104.24.0.0/16 SIN<br>104.26.0.0/16 SEA<br>104.31.0.0/16 SEA</p>
+<p>172.64.0.0/13 大多数为 LAX 、SJC 交替出现<br>除了 172.64.64.0 - 172.64.79.0 为 HKG</p>
+<p>103.21.244.0/24 SJC<br>141.101.64.0/18 SJC 、LAX 、HKG<br>162.158.0.0/15 SJC 、LAX<br>173.245.48.0/20 LAX<br>190.93.240.0/20 HKG<br>198.41.128.0/17 SJC 、LAX 、HKG</p>
+<p>不同 IP 速率差异较大，中位数为 73KB/s，<br>SEA 平均较快，个别 HKG 速度很快</p>
+<h2 id="CloudFlare官方公布的所有节点IP"><a href="#CloudFlare官方公布的所有节点IP" class="headerlink" title="CloudFlare官方公布的所有节点IP"></a>CloudFlare官方公布的所有节点IP</h2><p>官方节点更新地址：<br><a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/ips">https://www.cloudflare.com/zh-cn/ips</a></p>
+<p>IPv4<br>173.245.48.0/20<br>103.21.244.0/22<br>103.22.200.0/22<br>103.31.4.0/22<br>141.101.64.0/18<br>108.162.192.0/18<br>190.93.240.0/20<br>188.114.96.0/20<br>197.234.240.0/22<br>198.41.128.0/17<br>162.158.0.0/15<br>104.16.0.0/12<br>172.64.0.0/13<br>131.0.72.0/22<br>Also available as a <a target="_blank" rel="noopener" href="https://www.cloudflare.com/ips-v4">IPv4 text list</a>.</p>
+<p>IPv6<br>2400:cb00::/32<br>2606:4700::/32<br>2803:f800::/32<br>2405:b500::/32<br>2405:8100::/32<br>2a06:98c0::/29<br>2c0f:f248::/32<br>Also available as a <a target="_blank" rel="noopener" href="https://www.cloudflare.com/ips-v6">IPv6 text list</a>.</p>
+<h2 id="其他第三方CFP站点"><a href="#其他第三方CFP站点" class="headerlink" title="其他第三方CFP站点"></a>其他第三方CFP站点</h2><p><a target="_blank" rel="noopener" href="https://cdn.moeelf.comhttps//cf.tlo.xyz">https://cdn.moeelf.comhttps://cf.tlo.xyz</a></p>
+<h2 id="部分垃圾域名无法使用CF的服务"><a href="#部分垃圾域名无法使用CF的服务" class="headerlink" title="部分垃圾域名无法使用CF的服务"></a>部分垃圾域名无法使用CF的服务</h2><p>部分免费域名被Cloudflare嫌弃，如 .ga, .gq, .ml, .tk 等垃圾后缀域名无法使用CF，被限制使用。<br>去Namesilo.com 买6位数字的.xyz域名特别便宜，com域名也才8刀多，使用优惠码 NEW2020 首单还能优惠1美元。</p>
+<h2 id="套CloudFlare后获取用户真实IP地址"><a href="#套CloudFlare后获取用户真实IP地址" class="headerlink" title="套CloudFlare后获取用户真实IP地址"></a>套CloudFlare后获取用户真实IP地址</h2><p>适合宝塔面板 + Nginx，修正网站日志里面访客IP为CDN节点IP的问题。</p>
+<p>宝塔面板后台—Nginx设置—配置修改<br>找到</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">include</span> proxy.<span class="hljs-keyword">conf</span>;<br></code></pre></td></tr></table></figure>
+
+<p>在其上方添加：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">set_real_ip_from</span> <span class="hljs-number">0.0.0.0</span>/<span class="hljs-number">0</span>;<br><span class="hljs-attribute">real_ip_header</span> X-Forwarded-For;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/couldbeloveu/newimg/cloudflare/bnxbrealip1.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>然后记得重载Nginx配置就行，或者重启。</p>
+<p>原文来自：<a target="_blank" rel="noopener" href="https://www.pigji.com/598.html">https://www.pigji.com/598.html</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/27/minecraft-build/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">用腾讯轻量搭建带WEB控制台的MC服务器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/25/speed-test-iperf3/">
+                        <span class="hidden-mobile">测试 VPS 本地连接最大速度 iperf3</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="CDN简介内容分发网络（英语：Content Delivery Network或Content Distribution Network，缩写：CDN）是指一种透过互联网互相连接的电脑网络系统，利用最靠近每位用户的服务器，更快、更可靠地将音乐、图片、视频、应用程序及其他文件发送给用户，来提供高性能、可扩展性及低成本的网络内容传递给用户。内容分发网络的总承载量可以比单一骨干最大的带宽还要大。这使得内">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>CDN内容分发网络以及一些知名网络服务提供商 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CDN内容分发网络以及一些知名网络服务提供商">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-26 06:23" pubdate>
+        2020年11月26日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CDN内容分发网络以及一些知名网络服务提供商</h1>
+            
+            <div class="markdown-body">
+              <h1 id="CDN简介"><a href="#CDN简介" class="headerlink" title="CDN简介"></a>CDN简介</h1><p>内容分发网络（英语：Content Delivery Network或Content Distribution Network，缩写：CDN）是指一种透过互联网互相连接的电脑网络系统，利用最靠近每位用户的服务器，更快、更可靠地将音乐、图片、视频、应用程序及其他文件发送给用户，来提供高性能、可扩展性及低成本的网络内容传递给用户。内容分发网络的总承载量可以比单一骨干最大的带宽还要大。这使得内容分发网络可以承载的用户数量比起传统单一服务器多。也就是说，若把有100Gbps处理能力的服务器放在只有10Gbps带宽的资料中心，则亦只能发挥出10Gbps的承载量。但如果放到十个有10Gbps的地点，整个系统的承载量就可以到10*10Gbps。同时，将服务器放到不同地点，可以减少互连的流量，进而降低带宽成本。</p>
+<p>简而言之，CDN就是一种网络加速服务</p>
+<span id="more"></span>
+<h1 id="知名网络服务提供商"><a href="#知名网络服务提供商" class="headerlink" title="知名网络服务提供商"></a>知名网络服务提供商</h1><h3 id="Amazon-Web-Services"><a href="#Amazon-Web-Services" class="headerlink" title="Amazon Web Services"></a>Amazon Web Services</h3><p>亚马逊云市场份额占据全球首位，与其他云服务商相比呈碾压性地位。其中亚马逊所提供的网络加速服务有Amazon CloudFront,Amazon CloudFront是由亚马逊网络服务系统提供基础服务的一个内容分发网络（CDN）。其在欧洲、亚洲、北美、澳洲、南美、美国多个主要大城市多地拥有自己的数据中心，共107个网络边际服务点提供服务, CloudFront 能提高可缓存内容（如图像和视频）和动态内容（如 API 加速和动态站点交付）的性能；除Amazon CloudFront之外亚马逊还提供AWS Global Accelerator，简称AGA，AWS Global Accelerator 是一种服务，可以提高本地或全球用户获得的应用程序的可用性和性能。它提供静态 IP 地址，充当在单个或多个 AWS 区域中的应用程序终端节点（例如， Application Load Balancers、网络负载均衡器或 Amazon EC2 实例）的固定入口点。AWS Global Accelerator 使用 AWS 全球网络优化用户访问应用程序的路径，将流量性能提高多达 60%。AWS Global Accelerator 持续地监控应用程序终端节点的运行状况，并在 30 秒内将流量重定向到运行正常的终端节点。</p>
+<h3 id="Cloudflare"><a href="#Cloudflare" class="headerlink" title="Cloudflare"></a>Cloudflare</h3><p>Cloudflare是一间总部位于旧金山的美国跨国IT企业,以向客户提供基于反向代理的内容分发网络（Content Delivery Network, CDN）及分布式域名解析服务（Distributed Domain Name Server）为主要业务。利用Cloudflare全球Anycast网络，Cloudflare可以帮助受保护站点抵御包拒绝服务攻击等网络攻击，确保该网站长期在线，同时提升网站的性能、加载速度以改善访客体验。</p>
+<p>尤其是域名解析服务，我自己所有的域名都是在Cloudflare上完成的解析，因为我的服务器大多在国外，我还使用Cloudflare代理来加快网络访问速度，国内许多人在使用国外服务器建站时也有许多都使用了Cloudflare代理，除此之外，Cloudflare所提供的抗DDOS攻击也为许多网站提供了保护，许多人不必再去高价购买高防服务器。</p>
+<p>可以说Cloudflare为我们提供了许多便利。</p>
+<h4 id="Anycast"><a href="#Anycast" class="headerlink" title="Anycast"></a>Anycast</h4><p>Anycast中文叫任播，是一种网络定址和路由的策略，使得资料可以根据路由拓扑来决定送到“最近”或“最好”的目的地，任播是与单播（unicast）、广播（broadcast）和多播（multicast）不同的方式。在单播中，在网络地址和网络节点之间存在一一对应的关系。在广播和多播中，在网络地址和网络节点之间存在一对多的关系：每一个发送地址对应一群接收可以复制信息的节点。在任播中，在网络地址和网络节点之间存在一对多的关系：每一个地址对应一群接收节点，但在任何给定时间，只有其中之一可以接收到发送端来的信息。</p>
+<p>在互联网中，通常使用边界网关协议（BGP）来实现任播。</p>
+<p>在过去，任播适合无连线协议通常创建在用户数据报协议（UDP）多于连线导向协议（如会记录状态的传输控制协议（TCP））。然而，也有很多情况是传输控制协议（TCP）使用任播的，包含运载网络如Prolexic使用传输控制协议任播。</p>
+<p>因此，任播通常用于提供高可靠性和负载平衡。</p>
+<h3 id="Azure"><a href="#Azure" class="headerlink" title="Azure"></a>Azure</h3><p>Microsoft Azure 是微软的公用云端服务 (Public Cloud Service) 平台，是微软在线服务 (Microsoft Online Services) 的一部分，自 2008 年开始发展，2010年2月份正式推出，目前全球有54座资料中心以及44个CDN跳跃点 (POP)，并且于2015年时被 Gartner 列为云计算的领先者。Azure依靠微软在全球架设的54个资料中心，以及44个 CDN 跳跃点 ，以提供全球用户所需的资源，减少用户加载时间、节省带宽并加快响应速度。</p>
+<h3 id="Google-Cloud-Platform"><a href="#Google-Cloud-Platform" class="headerlink" title="Google Cloud Platform"></a>Google Cloud Platform</h3><p>Google云端平台（英语：Google Cloud Platform，简称为GCP）是一系列由Google提供的云计算服务，在运行Google搜索和YouTube的服务器上提供基础设施服务、平台服务及无服务器计算环境。除了提供管理工具外，Google云端平台还提供了一系列模块化云服务，包括：云计算、数据存储、数据分析及机器学习等。</p>
+<p>GCP注册后会提供300美金的额度来供用户试用，吸引了大量的用户来尝试它的服务，得益于Google在全球各地架设的服务器，我们可以用其来进行许多操作，是一项非常适合开发人员的服务。</p>
+<h3 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h3><p>阿里云在全球云服务厂商中市场份额排名第三，仅次于AWS和Azure，因为博主只试用过阿里云的服务，在这里就不多做评价。</p>
+<h3 id="腾讯云"><a href="#腾讯云" class="headerlink" title="腾讯云"></a>腾讯云</h3><p>腾讯云作为云服务商中的后起之秀，近年来提供的服务越来越受到用户的青睐，不少阿里云的用户转而去使用腾讯云，同时腾讯云常常针对用户会有许多优惠。2020年7月腾讯云轻量应用型服务器新增中国香港、新加坡地域，吸引了大量的用户，其中也包括我，我个人的博客也是放在腾讯云的服务器上。</p>
+<p>腾讯云还比较知名的就是它的AIA，腾讯云 AIA 是一个覆盖全球的动态加速网络，可以大幅提升业务的公网访问体验。不同于其他应用层加速服务，AIA 能实现 IP 传输的质量优化和多入口就近接入，减少网络传输的抖动、丢包，最终提升云上应用的服务质量，扩大服务范围，精简后端部署。购买 Anycast 弹性公网 IP （EIP）后，即可通过该 IP 使用 AIA 服务，该 EIP 会同时在多个地域发布，流量从最优入口进入，然后通过腾讯云的内网到达IP绑定的资源，实现跨地域加速。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以我个人经验来看，如果想入门的话可以先从腾讯云、阿里云的学生机开始使用，学生机普遍价格便宜，适合新手折腾。同时GCP300刀也是一项非常值得尝试的服务，3个月的免费使用可以让你学会许多服务器相关的知识，还可以在服务器上跑项目，提高自己的水平。至于像AWS的AGA和腾讯云的AIA这些服务因为价格的原因主要是面对公司而非个人使用，当然土豪随意。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">资源分享</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/29/41/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">搭建VPS网页端测速</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/26/39/">
+                        <span class="hidden-mobile">Buyvm购买及体验</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

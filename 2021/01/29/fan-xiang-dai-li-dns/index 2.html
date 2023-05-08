@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>利用反向代理和DNS智能解析加快网站访问速度 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="利用反向代理和DNS智能解析加快网站访问速度">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-29 15:32" pubdate>
+        2021年1月29日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">利用反向代理和DNS智能解析加快网站访问速度</h1>
+            
+            <div class="markdown-body">
+              <p>自从上次绿云（GreenCloud）突然的系统故障导致我的博客数据取不出来后，我决定放弃用绿云建站，转而使用口碑更好、更加稳定的contabo，contabo有德国慕尼黑、纽伦堡、美国密苏里州3个机房，我选择的是他家的德国纽伦堡机房，因为服务器远在德国，国内直接访问速度十分不佳，丢包严重，因此我决定使用反向代理的方式来加快网站的访问速度。</p>
+<h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><h2 id="反向代理简介"><a href="#反向代理简介" class="headerlink" title="反向代理简介"></a>反向代理简介</h2><p><strong>反向代理</strong>在电脑网络中是代理服务器的一种。服务器根据客户端的请求，从其关系的一组或多组后端服务器（如Web服务器）上获取资源，然后再将这些资源返回给客户端，客户端只会得知反向代理的IP地址，而不知道在代理服务器后面的服务器集群的存在。</p>
+<p>这里有个通俗点的简介，关于正向代理与反向代理：<a target="_blank" rel="noopener" href="https://www.notion.so/68dce6d0bc4f48089496e6e0b1081c32">https://www.notion.so/68dce6d0bc4f48089496e6e0b1081c32</a></p>
+<h2 id="反向代理作用"><a href="#反向代理作用" class="headerlink" title="反向代理作用"></a>反向代理作用</h2><p>反向代理的主要作用为：</p>
+<ul>
+<li>  对客户端隐藏服务器（集群）的IP地址</li>
+<li>  安全：作为应用层防火墙，为网站提供对基于Web的攻击行为（例如Dos/DDos）的防护，更容易排查恶意软件等</li>
+<li>  为后端服务器（集群）统一提供加密和SSL加速（如SSL终端代理）</li>
+<li>  负载均衡，若服务器集群中有负荷较高者，反向代理通过URL重写，根据连线请求从负荷较低者获取与所需相同的资源或备援</li>
+<li>  对于静态内容及短时间内有大量访问请求的动态内容提供缓存服务</li>
+<li>  对一些内容进行压缩，以节约带宽或为网络带宽不佳的网络提供服务</li>
+<li>  减速上传</li>
+<li>  为在私有网络下（如局域网）的服务器集群提供NAT穿透及外网发布服务</li>
+<li>  提供HTTP访问认证</li>
+<li>  突破互联网封锁（不常用，因为反向代理与客户端之间的连线不一定是加密连线，非加密连线仍有遭内容审查进而遭封禁的风险；此外面对针对域名的关键词过滤、DNS缓存污染/投毒攻击乃至深度数据包检测也无能为力）</li>
+</ul>
+<h2 id="常用反向代理软件"><a href="#常用反向代理软件" class="headerlink" title="常用反向代理软件"></a>常用反向代理软件</h2><ul>
+<li>  Nginx、Tengine</li>
+<li>  Apache HTTP Server</li>
+<li>  Varnish cache</li>
+<li>  Squid Cache</li>
+<li>  Traffic Server</li>
+<li>  HAProxy</li>
+<li>  YXORP</li>
+<li>  Polipo</li>
+<li>  Privoxy</li>
+<li>  IIS</li>
+</ul>
+<p>在这里我使用的是Nginx反向代理，通过宝塔面板实现，简单快捷，不需要自己去添加相应的代码，适合小白或入门用户。</p>
+<h1 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程"></a>操作过程</h1><h2 id="条件简介"><a href="#条件简介" class="headerlink" title="条件简介"></a>条件简介</h2><p>被反代的服务器（后端）：一台contabo德国</p>
+<p>用来反代的服务器（前端）：一台华为云香港，一台甲骨文（Oracle）韩国，一台Ovh新加坡</p>
+<p>域名：<a href="ioli.cc">ioli.cc</a></p>
+<p>所用技术：反向代理，DNSPod智能分线路解析</p>
+<p>所用环境：系统均为Debian10，均安装宝塔面板</p>
+<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>腾讯的DNSPod上可以实现分线路智能解析，判断用户的上网线路是联通或电信或移动，再智能返回对应服务器的 IP。</p>
+<p>华为云香港因为对联通友好，我便将联通线路解析到华为云香港的IP上；</p>
+<p>甲骨文韩国因为是CN2GIA线路，对电信友好，我便将电信线路解析到华为云香港的IP上；</p>
+<p>Ovh新加坡对移动友好，我便将移动线路解析到Ovh新加坡的IP上。</p>
+<p>注意无需解析到源站IP上，不然就成了自己反代自己。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210129144414.png" srcset="/img/loading.gif" lazyload alt="dns"></p>
+<p>上图变为解析的结果，电信运营商用户访问将返回甲骨文的IP地址，联通运营商用户访问将返回华为云的IP地址，移动运营商用户访问将返回Ovh的IP地址，同时要记住<strong>无论是否添加地区或者运营商的线路，一定需要先添加好【默认】线路的解析</strong>。</p>
+<h3 id="反向代理-1"><a href="#反向代理-1" class="headerlink" title="反向代理"></a>反向代理</h3><p>域名解析完成后，在用来反代的三台服务器上先安装好宝塔面板。</p>
+<p>Debian：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget -O install.sh http:<span class="hljs-regexp">//</span>download.bt.cn<span class="hljs-regexp">/install/i</span>nstall-ubuntu_6.<span class="hljs-number">0</span>.sh &amp;&amp; bash install.sh<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后，进入宝塔面板地址，会提示你安装Nginx，MySQL，PHP，phpMyAdmin，在这里用来反代的服务器只需要安装Nginx，其他的随意，被反代的则需要都安装。</p>
+<p>然后在三台服务器的宝塔面板上添加网站</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210129145345.png" srcset="/img/loading.gif" lazyload alt="wz"></p>
+<p>PHP版本选择纯静态，数据库不用创建。</p>
+<p>在SSL证书这添加证书，注意<strong>无论是反代服务器还是被反代的服务器，添加的域名所用的SSL证书必须相同，否则网站无法打开。</strong></p>
+<p>例如，<a href="ioli.cc">ioli.cc</a>所用的证书为Buypass，因此在四台服务器的宝塔面板网站SSL证书处均应填入证书的内容以及密钥。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210129150254.png" srcset="/img/loading.gif" lazyload alt="ssl"></p>
+<p>接下来便是添加反向代理了，点击设置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210129150636.png" srcset="/img/loading.gif" lazyload alt="settings"></p>
+<p>点击反向代理，添加反向代理</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210129150858.png" srcset="/img/loading.gif" lazyload alt="fd"></p>
+<p>代理名称随意，<strong>目标URL填入https://被反代的服务器IP，即后端服务器IP，</strong> <strong>发送域名填入绑定的域名</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210129151230.png" srcset="/img/loading.gif" lazyload alt="ip"></p>
+<p>我用了三台服务器反代，也就需要在三台服务器上进行以上的操作一共三次。</p>
+<p>关于是否开启缓存，我觉得看个人意愿，不过我觉得不要开为好，浪费资源，一切让建站机自己去处理就好；如果开的话，注意缓存时间的填写。</p>
+<p>完成以上操作后，还有最后一步，打开/etc/hosts，在空白处填入源站服务器IP 你的域名，注意要中间有空格，多台服务器反代的话需要在每一台服务器上完成此操作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210129152121.png" srcset="/img/loading.gif" lazyload alt="hosts"></p>
+<p>使用宝塔面板可直接编辑；使用命令行输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>hosts<br></code></pre></td></tr></table></figure>
+
+<p>再输入ip和域名即可。</p>
+<p>完成以上步骤就大功告成了，可用以下一段话做个总结。</p>
+<p>假如有三个服务器：ABC ，BC要反代A。 A为源站，A新建网站，域名是baidu.com。 BC只安装Nginx，新建网站，域名是baidu.com。 BC服务器添加反向代理（宝塔面板），目标URL填【https://源站IP】，发送域名baidu.com保存。 BC服务器打开 /etc/hosts 文件添加：A服务器ip baidu.com ，域名baidu.com解析到BC服务器ip。</p>
+<p>补充下，<strong>源站指的是后端服务器，也就是实际建站的服务器，在反向代理的过程中，源站的设置就和普通建站一样，没有任何改变。</strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>除了反向代理外，还可以<a target="_blank" rel="noopener" href="https://ioli.cc/98.html">CloudFlare自选节点IP教程，免费CDN加速VPS</a>，具体的速度快慢需要通过实际的测试去了解，我这里就不再多说。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%BB%BA%E7%AB%99%E7%9F%A5%E8%AF%86/">建站知识</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/02/netflix-spotify-apple/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">低价开通奈飞等服务的小技巧</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/29/hetzner/">
+                        <span class="hidden-mobile">Hetzner拍卖机简单评测</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

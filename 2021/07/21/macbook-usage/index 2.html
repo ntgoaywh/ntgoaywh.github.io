@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>MacBook使用体验 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="MacBook使用体验">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-21 17:43" pubdate>
+        2021年7月21日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      29
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MacBook使用体验</h1>
+            
+            <div class="markdown-body">
+              <h1 id="第一天晚上（7-18）"><a href="#第一天晚上（7-18）" class="headerlink" title="第一天晚上（7.18）"></a>第一天晚上（7.18）</h1><p>因为是中午到的，下午又要去实验室，只拆开了电脑进行了简单的配置，白天没怎么用，晚上六点左右才开始正式使用。首先安装了基本的软件（QQ、微信、MS套件等等），体验了非常好奇的随航sidecar功能，个人体验非常好，感觉如果想要保护好MacBook，还需要购买一个内胆包，避免出现划痕。碰到了一个问题，由于M1没有网线接口，所以需要用拓展坞进行连接，但使用了两个拓展坞后，出现了无反应和连接上无法识别的问题，估计是驱动的问题，这几天在京东上找下适合MacBook的拓展坞，其实拓展坞使用频率比较小，我个人主要用就是为了插U盘和网线，而且网线一般在需要下比较大的软件时才需要用，平时学校的Wi-Fi勉强能用😂。</p>
+<h1 id="第二天（7-19）"><a href="#第二天（7-19）" class="headerlink" title="第二天（7.19）"></a>第二天（7.19）</h1><p>今天我主要还是安装了一些之前在win上常用的软件，同时继续体验随航，逐渐弄清楚了随航的相关使用方法，的确特别好用，延迟特别低，几乎感受不到，也非常流畅，就像在Mac上操作一样。晚上安装了IINA这款Mac上的视频播放软件，它能够直接识别视频url并在线播放，如果在Chrome上安装了IINA的拓展，打开一个视频网站，会发现页面地址栏有一个小图标点击它，并允许打开IINA，等待加载后就可以在IINA里观看无广告的视频。</p>
+<p>但是，在使用IINA的过程中，我碰到了许多问题，但最终还是被我一一解决🙂，以下我就简单的记录下经验。</p>
+<h2 id="安装Homebrew"><a href="#安装Homebrew" class="headerlink" title="安装Homebrew"></a>安装Homebrew</h2><p>因为要想使用IINA在线播放视频的功能，需要用到YouTube-dl，而在Mac上下载YouTube-dl一般需要在命令行上使用Homebrew进行安装，我是新买的MacBook，还没有安装Homebrew，所以需要先安装Homebrew，使用如下命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;<br></code></pre></td></tr></table></figure>
+
+<p>在安装的同时按照提示输入密码，完成相关要求。</p>
+<h2 id="安装YouTube-dl"><a href="#安装YouTube-dl" class="headerlink" title="安装YouTube-dl"></a>安装YouTube-dl</h2><p>安装完Homebrew后，就可以直接安装YouTube-dl了，使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">brew install youtube-dl<br></code></pre></td></tr></table></figure>
+
+<p>同样等待安装完成。</p>
+<h2 id="配置IINA"><a href="#配置IINA" class="headerlink" title="配置IINA"></a>配置IINA</h2><p>在偏好设置中点击网络,点击启用YouTube-dl，并填入YouTube-dl路径，YouTube-dl的路径可通过在终端输入where youtube-dl得到。同时若想通过IINA播放YouTube等国外网站上的视频，还需要设置HTTP代理，在HTTP代理后填入127.0.0.1:’HTTP的端口号’。</p>
+<p>有一个无法忽视的问题，就是在终端安装Homebrew和用Homebrew安装YouTube-dl时，经常会出现443等错误，这是GitHub在国内无法正常访问以及Homebrew的源在国外的原因，要想解决可以给终端设置代理，这里可自行上网查找。</p>
+<p>我这里分享下我发现的一个小惊喜，因为M1可以安装iOS上的应用，所以当我安装了Shadowrocket后，我发现终端自动走了代理，能够ping通Google，从GitHub上下东西速度也和从国内网站上下东西相当，这个时候使用终端就非常的舒适了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210720223032548.png" srcset="/img/loading.gif" lazyload alt="image-20210720223032548"></p>
+<p>小插曲：今天晚上看同学在安装win11，但在睡前还没装完，明天起来看看win11。</p>
+<h1 id="第三天（7-20）"><a href="#第三天（7-20）" class="headerlink" title="第三天（7.20）"></a>第三天（7.20）</h1><p>今天上午主要是在寻找一个Mac上的好用的写latex的软件，后来我选择了Mactex，看了许多方案后，最终就暂时先用最简单的Mactex配置，暂时不使用大多数人推荐的Sublime text和skim。好吧，主要是Sublime text要付费，我其实全都配置好了，发现要付费我就把它给删了，主要是现阶段我用latex的频率比较低，还没必要购买。</p>
+<p>然后今天还下载了超级右键，按下鼠标右键后就可以新建各种类型的文档，有win那味了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210720222642209.png" srcset="/img/loading.gif" lazyload alt="image-20210720222642209"></p>
+<p>不得不说开发超级右键的这家公司确实不错，很良心，我还在使用的一个截屏软件iShot也是由这家公司写的，也很好用。</p>
+<p>再说一句，随航这个功能我真的是❤️上了，是真的好用。</p>
+<p>因为平时有写博客的爱好，所以我又下载了picgo这款图片上传软件，同时搭配GitHub作为我的图床，当我截屏后可以直接将图片上传到我的GitHub仓库，同时还会获得图片到外链，能够插入到文章中。</p>
+<p>Typora能够使用Picgo作为其默认的图片上传工具，当我在Typora中粘贴图片时，它会自动调用Picgo将图片上传到GitHub上，这时图片的地址就由本地地址变为外链，这样当我将文章发布在我的博客上时，不需要再手动上传图片了，直接调用图片外链即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210721012428192.png" srcset="/img/loading.gif" lazyload alt="image-20210721012428192"></p>
+<p>闲的没事把课表一项项手动导入到了自带的日历中….</p>
+<p>一个个点开Mac上自带的软件，打开词典时发现词典能够直接查询维基百科，但是因为国内无法使用维基，所以词典上的维基百科也就相当于没有。这个问题决定明天解决，现在太晚了…</p>
+<h1 id="第四天（7-21）"><a href="#第四天（7-21）" class="headerlink" title="第四天（7.21）"></a>第四天（7.21）</h1><p>上午我查找了词典正常使用维基百科的解决办法，网上的解决方法一般是通过下载Proxifier然后添加socks5端口，添加规则，改变一些配置，最终便能正常使用维基百科，但我发现了一个很大的问题，就是使用了<strong>Proxifier for Mac v3</strong>后，Mac的随航功能无法使用，这对我平时的使用有非常大的影响，虽说也能够解决，但一想到每次都要打开这个软件最终我选择了放弃，使用前一个版本的<strong>Proxifier</strong>不会产生上述问题，但前一个版本的只支持Intel，不支持M1😞。</p>
+<p>最终，我发现surge开启了增强模式后能够直接使用维基百科，实际使用后也发现的确是这样，但surge需要付费买断，我决定先试用14天后再决定是否买断，毕竟词典的维基百科功能平时也不会用的太多。准备等回家后尝试下surge的网关模式，体验下Mac做软路由是什么样的感觉。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210721173547562.png" srcset="/img/loading.gif" lazyload alt="image-20210721173547562"></p>
+<p>到现在，还有一个问题没有解决或者说是疑惑没有得到解答，就是关于Mac的终端代理，我试过surge给出的终端代理命令，也找过网上的相关教程，在我使用curl cip.cc后，返回的IP仍然是本地IP而不是代理的IP，这让我很是疑惑，但终端使用起来又像是开启了代理，这还需要我进一步的查查资料，才能找到正确的方法。</p>
+<p>晚上的时候下载了CS:GO，想看下M1上的游戏体验怎么样，迫于网速原因还没下载完，很奇怪的一点，steam下游戏居然是走的proxy而不是direct。</p>
+<p>晚上在tg群上了Spotify的家庭车，Spotify有一个很有趣的功能，就是能通过Mac直接控制iPad的播放、暂停等等，当在iPad上播放音乐时，Mac上也会同步显示，反过来也是一样，延迟几乎为0。现在我在iPad上播放Spotify上的歌曲，然后在Mac上下载了lyricsxX显示播放歌曲的歌词，算是解决了Spotify Mac版没有歌词的缺点。</p>
+<p>从今天开始，我将主要使用Safari，我已经把Chrome上的书签以及密码导入到Safari，Mac上使用Safari体验还算不错，主要是我觉得它的UI要好于Chrome。当我想把一个YouTube账户所订阅的频道导出并导入到另一个YouTube账户时，我发现YouTube自带的导出所有频道的功能没有了🥲，一年前明明都还有的….最终可通过安装油猴配合<a target="_blank" rel="noopener" href="https://greasyfork.org/fr/scripts/418574-export-youtube-subscriptions-to-rss-opml">一个脚本</a>便可成功导出，但在我尝试后发现不能导出全部的频道，不知道是为什么。</p>
+<h1 id="第五天（7-22）"><a href="#第五天（7-22）" class="headerlink" title="第五天（7.22）"></a>第五天（7.22）</h1><p>今天在YouTube上发现了一个清华的博主，点进去一看发现是台湾的国立清华大学，看完了一个视频，感觉还挺有意思的，一个爱学习的大三学生—<a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCIr83ylpcdwj-uki4Z4EF_Q">MushroomWang</a>，长得也挺好看的😌</p>
+<h1 id="第六天（7-23）"><a href="#第六天（7-23）" class="headerlink" title="第六天（7.23）"></a>第六天（7.23）</h1><p>这两天也没什么去尝试什么新的东西，昨天晚上在用pycharm装一些库，结果其他都装好了，一个scikit-learn装了半天都没装完，电脑还发热特别严重，最终我就放弃了，奇怪，M1不是不怎么发热的吗？前天下了setapp，感觉里面的大部分软件使用频率确实不太高，只有几个用的还算多，但如果直接买断这些软件，钱算下来比每季都订阅还要少，所以我觉得只用Downie，MarginNote，Paste的话，直接买断就好了，没必要一直订阅，这几天我也在用surge，先体验两周再决定是否买断。</p>
+<p>关于AirPods：前几天看一直都是预计7月28日～8月4日到达，今天早上突然收到信息变为预计7月28日～7月30日，晚上又收到信息预计7月25日或之前到达！！！上官网查询后发现已经从北京发货了，用顺丰送的，走的航空路线，快的话明天就可以到了😃</p>
+<h1 id="第七天（7-24）"><a href="#第七天（7-24）" class="headerlink" title="第七天（7.24）"></a>第七天（7.24）</h1><p>今天中午AirPods居然就到了，真的快，总体上使用没什么问题，但自动切换这个功能却无法实现，我不论是更新系统还是重新登陆iCloud都无法解决，准备有时间去Apple店里问问，线上的解决办法看来看去就这几个。</p>
+<p>看了会python，但又看不进去，有点担心九月的二级了。</p>
+<p>晚上我重启了一遍Mac，发现自动切换功能可以用了， 但从iPhone或者iPad上切换到Mac上却不行，和我下午在网上看的一模一样，苹果的这个功能做的确实稀烂。</p>
+<p>晚上电脑休眠了4个多小时后，我打开Spotify想听歌发现无法播放歌曲，我以为是Spotify的问题，后来当我打开Twitch、YouTube发现都无法播放视频并且网络没有任何问题时，我猜测是电脑出了问题，于是我重启了电脑，发现就能正常播放了，我上网查了下，这是macOS系统的一个bug，我看网上的文章都是19年的了，一个bug居然几年了还没修好😔。<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Cherry-Linux/p/9303898.html">Mac突然没有声音但是重启后可以恢复</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/22/picgo-image/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">利用Picgo和GitHub搭建图床</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/12/buy-macbook/">
+                        <span class="hidden-mobile">Macbook购买记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

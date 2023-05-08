@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>从零开始搭建一个属于自己的博客(纯小白教程) - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="从零开始搭建一个属于自己的博客(纯小白教程)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-11 01:32" pubdate>
+        2021年2月11日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从零开始搭建一个属于自己的博客(纯小白教程)</h1>
+            
+            <div class="markdown-body">
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>趁着寒假有时间，我回顾了我搭建博客的过程，于是想分享下自己的经验，写一篇小白也能看懂的教程，让每个人都能够搭建属于自己的博客。</p>
+<h1 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h1><p>一个博客首先需要一台服务器（VPS/独服），虚拟主机也可以，能将博客托管在上面，同时还需要一个能访问到它的域名，也就是要取一个名字。有了服务器和域名，再加上相关的脚本，一个博客就能成功搭建。</p>
+<h1 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h1><h2 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h2><p>服务器（VPS）我选择在腾讯云 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/">https://cloud.tencent.com/</a> 购买，这里我选择购买腾讯云的轻量应用服务器。</p>
+<p>首先腾讯云的账号自行注册，这里可以使用微信登录并注册，注意要完成实名认证。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209014036.png" srcset="/img/loading.gif" lazyload alt="1"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209014143.png" srcset="/img/loading.gif" lazyload alt="2"></p>
+<p>因为使用香港以及国外服务器是不需要备案的，所以这里避免备案以及后续一些不必要的麻烦我们选择购买香港地域的，当然新加坡和硅谷地区也可以，这里还考虑到香港离大陆是最近的，访问速度最快。</p>
+<p>镜像方面我们选择系统镜像，具体的系统看个人喜好，我一般选择Debian，注意：因为版权的原因，选择Windows系统是要贵一点的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209014608.png" srcset="/img/loading.gif" lazyload alt="3"></p>
+<p>实例套餐方面，选择最低一档24元一个月的就足够搭建博客了，实例名称随意，购买时长可先选择一个月试试效果，所有选择完后，勾选同意协议，点击立即购买。</p>
+<p><img src="https://blog.jkfff.com/wp-content/uploads/2021/02/image-20210209014839381-1024x487.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击提交订单</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209130757.png" srcset="/img/loading.gif" lazyload alt="5"></p>
+<p>选择付款方式，这里我们选择在线支付，可以用微信、QQ钱包、银行卡等支付，方便快捷。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209130639.png" srcset="/img/loading.gif" lazyload alt="6"></p>
+<p>点击下一步，跳转到新页面，选择微信扫码支付</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209131013.png" srcset="/img/loading.gif" lazyload alt="7"></p>
+<p>支付成功后点击返回，再点击进入控制台。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209131205.png" srcset="/img/loading.gif" lazyload alt="8"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209131308.png" srcset="/img/loading.gif" lazyload alt="9"></p>
+<p>在控制台我们便可以看到刚刚购买的轻量服务器。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209131440.png" srcset="/img/loading.gif" lazyload alt="10"></p>
+<p>点击服务器名称进入管理页面，在这里可以看到服务器的相关信息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209131650.png" srcset="/img/loading.gif" lazyload alt="11"></p>
+<p>此时点击远程登录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209132121.png" srcset="/img/loading.gif" lazyload alt="11"></p>
+<p>点击重置密码，自己设定一个复杂的密码，避免被人盗用。当然自己也可以绑定一个密钥，更加安全，这个方法之后再说。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209132215.png" srcset="/img/loading.gif" lazyload alt="12"></p>
+<p>然后输入新密码，确认新密码，其他保持默认，注意密码的设定规则。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209132549.png" srcset="/img/loading.gif" lazyload alt="12"></p>
+<p>密码输入完毕后，点击下一步，勾选同意强制关机，再点击重置密码，等待几分钟便可重置成功。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209132837.png" srcset="/img/loading.gif" lazyload alt="13"></p>
+<p>到这里为止，服务器的选购环节算完成了。</p>
+<h2 id="服务器登录及配置"><a href="#服务器登录及配置" class="headerlink" title="服务器登录及配置"></a>服务器登录及配置</h2><p>服务器的登录需要用到SSH工具，这里我们选用FinalShell :<a target="_blank" rel="noopener" href="https://www.hostbuf.com/">https://www.hostbuf.com/</a></p>
+<h3 id="Win版下载地址"><a href="#Win版下载地址" class="headerlink" title="Win版下载地址"></a>Win版下载地址</h3><p><a target="_blank" rel="noopener" href="http://www.hostbuf.com/downloads/finalshell_install.exe">http://www.hostbuf.com/downloads/finalshell_install.exe</a></p>
+<h3 id="macOS下载地址"><a href="#macOS下载地址" class="headerlink" title="macOS下载地址"></a>macOS下载地址</h3><p><a target="_blank" rel="noopener" href="http://www.hostbuf.com/downloads/finalshell_install.pkg">http://www.hostbuf.com/downloads/finalshell_install.pkg</a></p>
+<p>点击上方链接下载并安装后，打开软件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209134145.png" srcset="/img/loading.gif" lazyload alt="14"></p>
+<p>没有其他的需求，免费版的就已经够用了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209134359.png" srcset="/img/loading.gif" lazyload alt="15"></p>
+<h3 id="添加服务器"><a href="#添加服务器" class="headerlink" title="添加服务器"></a>添加服务器</h3><p>按下图顺序依次点击，然后点击<strong>SSH连接(Linux)。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209134625.png" srcset="/img/loading.gif" lazyload alt="16"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210209134910.png" srcset="/img/loading.gif" lazyload alt="17"></p>
+<p>其他保持默认，最后点击确定，添加好的服务器就会出现在连接管理器的列表里。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210010159.png" srcset="/img/loading.gif" lazyload alt="18"></p>
+<p>此时，双击添加的服务器——腾讯云香港，出现下方的界面时点击接受并保存，进入服务器命令行操作界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210012829.png" srcset="/img/loading.gif" lazyload alt="25"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210010709.png" srcset="/img/loading.gif" lazyload alt="19"></p>
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><p>一般拿到服务器，我的习惯是先dd系统，Linux dd系统就相当于Windows里的重装系统，因为有些商家的服务器系统模板有些问题或者有一些监控，这里为了避免出现问题，我们选择dd以更换为一个纯净的Linux系统。</p>
+<p>我的博客曾分享过Linux dd的脚本：<a target="_blank" rel="noopener" href="https://ioli.cc/38.html"><a target="_blank" rel="noopener" href="https://ioli.cc/38.html">Linux系统下，一键安装Centos6-7、Debian7-10、Ubuntu14-18、Windows等</a></a>，这里直接拿来使用。</p>
+<p>我选择dd Debian10，命令为</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget -N --no-check-certificate https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/veip007/</span>dd<span class="hljs-regexp">/master/</span>dd-gd.sh &amp;&amp; chmod +x dd-gd.sh &amp;&amp; ./dd-gd.sh<br></code></pre></td></tr></table></figure>
+
+<p>复制以上命令，返回到FinalXshell操作界面，点击鼠标右键选择粘贴。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210011433.png" srcset="/img/loading.gif" lazyload alt="20"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210011515.png" srcset="/img/loading.gif" lazyload alt="21"></p>
+<p>然后按下回车键，系统便会自动进入dd流程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210011618.png" srcset="/img/loading.gif" lazyload alt="22"></p>
+<p>当出现镜像包选择时，输入7，选择Debian 10，记住dd完后的服务器密码为<strong>cxthhhhh.com</strong>，然后按下回车键，接下来便是耐心的等待dd完成，系统会自动断开连接。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210012106.png" srcset="/img/loading.gif" lazyload alt="23"></p>
+<p>系统断开连接10分钟后再连接，视性能差异时间或长或短，重新连接只需点击操作界面下方的闪电图标，</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210012439.png" srcset="/img/loading.gif" lazyload alt="24"></p>
+<p>如果dd已经完成，点击闪电图标重新连接会出现安全警告，同样点击接受并保存，若点击后又断开只需再点击闪电图标直到连接上为止。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210012829.png" srcset="/img/loading.gif" lazyload alt="26"></p>
+<p>因为dd了系统，服务器的密码发生了改变，需要重新输入密码，此时需输入上方所需要记住的密码<strong>cxthhhhh.com</strong>，但是无需记住密码。</p>
+<p><img src="https://blog.jkfff.com/wp-content/uploads/2021/02/image-20210210013239856.png" srcset="/img/loading.gif" lazyload></p>
+<p>输入密码后点击确定，会重新进入操作界面，同样的，若出现断开连接现象，只需多点击闪电图标直到连接上为止。</p>
+<p>进入后为如下界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210013513.png" srcset="/img/loading.gif" lazyload alt="27"></p>
+<p>此时输入</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">apt-<span class="hljs-keyword">get</span> <span class="hljs-keyword">update</span> -y<br></code></pre></td></tr></table></figure>
+
+<p>来更新下系统。</p>
+<p>因为之前的密码太弱而且是公共密码，此时再更改服务器密码，</p>
+<p>输入</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">passwd root</span><br></code></pre></td></tr></table></figure>
+
+<p>会让你输入新的密码并重复一遍，更改完成后会显示下图所示的界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210013743.png" srcset="/img/loading.gif" lazyload alt="28"></p>
+<p>然后点击下方的齿轮图标进入服务器信息编辑界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210013935.png" srcset="/img/loading.gif" lazyload alt="29"></p>
+<p>按图示操作更改密码并应用保存，然后关闭页面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210014402.png" srcset="/img/loading.gif" lazyload alt="30"></p>
+<p>到此为止服务器的配置工作也算完成了，接下来便是环境的部署。</p>
+<h2 id="服务器环境部署"><a href="#服务器环境部署" class="headerlink" title="服务器环境部署"></a>服务器环境部署</h2><h3 id="宝塔面板安装"><a href="#宝塔面板安装" class="headerlink" title="宝塔面板安装"></a>宝塔面板安装</h3><p>首先，对于小白我是推荐使用宝塔面板的，搭建网站博客等等操作通过宝塔面板都可以轻松的完成。</p>
+<p>进入宝塔官网：<a target="_blank" rel="noopener" href="https://www.bt.cn/">https://www.bt.cn/</a>，点击立即安装。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210014742.png" srcset="/img/loading.gif" lazyload alt="31"></p>
+<p>然后会弹出相关的脚本界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210014823.png" srcset="/img/loading.gif" lazyload alt="32"></p>
+<p>因为服务器是Debian10系统，便复制Debian安装命令。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget -O install.sh http:<span class="hljs-regexp">//</span>download.bt.cn<span class="hljs-regexp">/install/i</span>nstall-ubuntu_6.<span class="hljs-number">0</span>.sh &amp;&amp; bash install.sh<br></code></pre></td></tr></table></figure>
+
+<p>然后同样粘贴在命令行操作界面，点击回车，便会自动开始安装宝塔面板。</p>
+<p>但此时出现如下错误</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210015050.png" srcset="/img/loading.gif" lazyload alt="33"></p>
+<p>wget未安装，我们只需输入</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">apt-<span class="hljs-builtin-name">get</span> install -y wget<br></code></pre></td></tr></table></figure>
+
+<p>如果是Centos系统，我们则需输入</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y wget<br></code></pre></td></tr></table></figure>
+
+<p>等待wget安装后再执行一遍宝塔安装命令，此时再输入y便可成功安装。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210015307.png" srcset="/img/loading.gif" lazyload alt="34"></p>
+<p>成功安装便会显示如下界面</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210015657.png" srcset="/img/loading.gif" lazyload alt="35"></p>
+<p>其中的外网面板地址便是宝塔面板的登录地址，这里我们需要在防火墙处开放8888端口以能正常访问到服务界面。</p>
+<h3 id="开放防火墙"><a href="#开放防火墙" class="headerlink" title="开放防火墙"></a>开放防火墙</h3><p>登录自己的腾讯云，进入控制台，点击轻量应用服务器。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210152712.png" srcset="/img/loading.gif" lazyload alt="34"></p>
+<p>再点击服务器名称进入管理界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210152758.png" srcset="/img/loading.gif" lazyload alt="35"></p>
+<p>点击防火墙，添加规则，在端口处填入8888，点击确定后会添加此条规则。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210152852.png" srcset="/img/loading.gif" lazyload alt="35"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210152946.png" srcset="/img/loading.gif" lazyload alt="36"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210153050.png" srcset="/img/loading.gif" lazyload alt="37"></p>
+<h3 id="进入宝塔服务界面"><a href="#进入宝塔服务界面" class="headerlink" title="进入宝塔服务界面"></a>进入宝塔服务界面</h3><p>在浏览器中输入上面安装宝塔面板后给出的外网登录地址，按下回车会进入登录界面，需要输入账号和密码，也就是前面所给的账号密码，输入完成后点击登录，然后会进入用户协议界面，翻到最下面，勾选<strong>我已阅读并同意“《用户协议》”</strong>，点击进入面板。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210153436.png" srcset="/img/loading.gif" lazyload alt="38"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210153754.png" srcset="/img/loading.gif" lazyload alt="39"></p>
+<p>进入后会自动跳出推荐安装套件，这里我们选择左边的LNMP，把PHP的版本调成最新的PHP7.4，其他的保持不变，然后点击一键安装，此时后台就会自动开始安装LNMP。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210154123.png" srcset="/img/loading.gif" lazyload alt="40"></p>
+<p>点击一键安装后会弹出消息盒子，这里我们可以知道安装的进度，然后点击右上角关闭页面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210154308.png" srcset="/img/loading.gif" lazyload alt="41"></p>
+<p>关闭消息盒子后会提示让我们强制绑定宝塔官网账号，这里我们可不绑定，用一行命令即可关闭强制登录。</p>
+<p>在服务器的命令行操作界面，执行以下脚本，解决强制登录提醒。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">rm -f <span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/panel/</span>data/bind.pl<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210154639.png" srcset="/img/loading.gif" lazyload alt="42"></p>
+<p>执行完毕后，刷新网页，强制登录的提示就没有了，此时耐心等待LNMP的安装即可。</p>
+<p>安装完成后在消息盒子处可看到各项任务完成时间。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210224332.png" srcset="/img/loading.gif" lazyload alt="43"></p>
+<h2 id="域名购买"><a href="#域名购买" class="headerlink" title="域名购买"></a>域名购买</h2><p>LNMP一般安装需要一些时间，趁这个时间我们去选购一个域名，同样登录腾讯云，打开首页，将鼠标放在产品上，并点击域名注册这一选项。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210225535.png" srcset="/img/loading.gif" lazyload alt="43"></p>
+<p>搜索一个自己喜欢并且没有被注册的域名，挑选好后缀，将其加入购物车，最后购买付款，注意购买的域名需要实名认证，这里填写好自己的个人信息即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210225652.png" srcset="/img/loading.gif" lazyload alt="44"></p>
+<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>只有将一个域名解析到服务器的IP上，我们才能够通过域名访问到我们的博客，这里使用DNSPOD进行域名解析。</p>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/cns">腾讯云-控制台 (tencent.com)</a></p>
+<p>进入DNS解析控制台，选择好域名，点击解析，进入解析页面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210231430.png" srcset="/img/loading.gif" lazyload alt="45"></p>
+<p>这里我们将这个主域名解析到我们的服务器IP上，具体步骤参考我下面给出的图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210231827.png" srcset="/img/loading.gif" lazyload alt="46"></p>
+<p>不同的主机记录对应不同的域名，主机记录为@是主域名，其余的记录均为子域名。</p>
+<p>完成以上步骤后，等待10分钟就会解析成功。同时按下Win键+S，然后在出现的搜索框中输入cmd打开命令提示符，在命令提示符中输入</p>
+<p>ping+空格+我们所解析的域名</p>
+<p>若成功返回为服务器的IP，则说明我们的域名解析已经完成。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210234435.png" srcset="/img/loading.gif" lazyload alt="45"></p>
+<h2 id="添加网站"><a href="#添加网站" class="headerlink" title="添加网站"></a>添加网站</h2><p>进入宝塔面板管理界面，点击网站。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210234944.png" srcset="/img/loading.gif" lazyload alt="46"></p>
+<p>添加站点，按下图步骤进行，要记好数据库名、用户名和数据库密码。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210235244.png" srcset="/img/loading.gif" lazyload alt="47"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210235407.png" srcset="/img/loading.gif" lazyload alt="47"></p>
+<p>添加完站点后，部署SSL证书，点击未部署，具体操作按下图所示。</p>
+<p><img src="https://blog.jkfff.com/wp-content/uploads/2021/02/image-20210210235525402-1024x57.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210210235631.png" srcset="/img/loading.gif" lazyload alt="48"></p>
+<p>Let’s Encrypt证书是免费的SSL证书，有效期为三个月，在宝塔面板上申请该证书三个月到期后会自动续期。</p>
+<p>申请完证书后，勾选右上角的强制HTTPS，使得网站打开时能够出现一把锁。</p>
+<p>关闭证书申请页面，进入网站根目录。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211000825.png" srcset="/img/loading.gif" lazyload alt="47"></p>
+<p>博客的类型我们选择WordPress，进入WordPress官网的下载页面：<a target="_blank" rel="noopener" href="https://cn.wordpress.org/download/">下载 WordPress.org China 简体中文</a></p>
+<p>复制最新版本的下载链接：<a target="_blank" rel="noopener" href="https://cn.wordpress.org/latest-zh_CN.zip">https://cn.wordpress.org/latest-zh_CN.zip</a></p>
+<p>点击远程下载，下载最新版本的WordPress。</p>
+<p><img src="https://blog.jkfff.com/wp-content/uploads/2021/02/image-20210211001853574-1024x524.png" srcset="/img/loading.gif" lazyload></p>
+<p>选择下载的压缩包，点击选项“解压”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211002007.png" srcset="/img/loading.gif" lazyload alt="50"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211002234.png" srcset="/img/loading.gif" lazyload alt="51"></p>
+<p>点击进入解压出来的文件夹。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211002406.png" srcset="/img/loading.gif" lazyload alt="52"></p>
+<p>全选文件，复制所有文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211003325.png" srcset="/img/loading.gif" lazyload alt="53"></p>
+<p>再返回到网站根目录，点击粘贴。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211003446.png" srcset="/img/loading.gif" lazyload alt="54"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211003544.png" srcset="/img/loading.gif" lazyload alt="55"></p>
+<p>粘贴完成后，基本步骤已经全部完成。</p>
+<h3 id="添加伪静态"><a href="#添加伪静态" class="headerlink" title="添加伪静态"></a>添加伪静态</h3><p>点击网站设置，设置伪静态。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211010132.png" srcset="/img/loading.gif" lazyload alt="63"></p>
+<h2 id="进入博客"><a href="#进入博客" class="headerlink" title="进入博客"></a>进入博客</h2><p>在浏览器的地址栏输入博客的域名，回车后会进入WordPress的配置页面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211004010.png" srcset="/img/loading.gif" lazyload alt="56"></p>
+<p>点击现在就开始，会让我们输入数据库名等信息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211004314.png" srcset="/img/loading.gif" lazyload alt="57"></p>
+<p>若已忘记，可点击宝塔面板管理界面的数据库，在那可查看数据库的信息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211004423.png" srcset="/img/loading.gif" lazyload alt="58"></p>
+<p>信息填完后，点击提交，再点击现在安装，最后给博客取一下名字，点击安装WordPress。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211004608.png" srcset="/img/loading.gif" lazyload alt="59"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211004846.png" srcset="/img/loading.gif" lazyload alt="60"></p>
+<p>安装完成后，点击登录，输入刚才设定的用户名和密码，最后再点击登录。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211005141.png" srcset="/img/loading.gif" lazyload alt="61"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211005223.png" srcset="/img/loading.gif" lazyload alt="62"></p>
+<p>登录后会进入博客的后台管理界面，点击文章可以自己写文章，WordPress的玩法很多，其他的操作便由自己去探索。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211005345.png" srcset="/img/loading.gif" lazyload alt="63"></p>
+<h3 id="更换博客主题"><a href="#更换博客主题" class="headerlink" title="更换博客主题"></a>更换博客主题</h3><p>首先去网上找一个自己觉得好看的主题，这里我推荐一个 <a target="_blank" rel="noopener" href="https://github.com/mashirozx/Sakura">mashirozx/Sakura: A Wonderful WordPress Theme: 樱花庄的白猫博客主题 (github.com)</a></p>
+<p>在release界面可下载最新的安装包：<a target="_blank" rel="noopener" href="https://github.com/mashirozx/Sakura/archive/v3.3.9.zip">下载链接</a></p>
+<p>进入网站根目录，点击wp-content，再点击themes，再点击远程下载，复制主题包的下载链接，点击确认。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211010844.png" srcset="/img/loading.gif" lazyload alt="65"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211011009.png" srcset="/img/loading.gif" lazyload alt="66"></p>
+<p>下载完成后解压。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211011124.png" srcset="/img/loading.gif" lazyload alt="67"></p>
+<p>进入博客后台界面，点击外观，再主题页面选择我们下载的主题Sakura，点击启用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a08332424/blog/article/20210211011437.png" srcset="/img/loading.gif" lazyload alt="68"></p>
+<p>此时再打开我们的博客地址，主题已经发生了改变。其余各式各样的配置参考主题作者所写的文章：<a target="_blank" rel="noopener" href="https://2heng.xin/theme-sakura/#toc-head-30">WordPress 主题 Sakura ? 樱花庄的白猫 (2heng.xin)</a></p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>依次完成以上步骤，一个博客便能成功搭建。在如今微博、知乎、B站、抖音等平台能让我们方便记录生活或学习的情况下，我觉得拥有一个自己的博客是一个非常有意义的事情，在自己的博客上可以畅所欲言，不用受这些平台的约束，自己想写什么就写什么。</p>
+<p>这篇文章拖了快两周，总算在除夕的这天凌晨完成，也算是一个年度经验总结。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%BB%BA%E7%AB%99%E7%9F%A5%E8%AF%86/">建站知识</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/24/deep-learning-notes/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Deep Learning Notes</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/06/introduction-of-office-subscription/">
+                        <span class="hidden-mobile">微软Office相关订阅全介绍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
