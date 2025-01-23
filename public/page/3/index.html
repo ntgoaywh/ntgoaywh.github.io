@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/night.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="人生若只如初见，何事秋风悲画扇">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/02/renew-office-e5/" target="_self">
+          微软开发者E5续期教程
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/02/renew-office-e5/" target="_self">
+          
+          
+            
+          
+          前言微软开发者计划E5只有三个月的有效期，但是我们可以通过调用API的方式使自己的账号保持活跃，从而成功续期，以下我就来介绍一个Github上的项目AutoApiP。
+项目地址AutoApiP—E5自动续期
+说明
+  E5自动续期程序，但是不保证续期
+  设置了周六日(UTC时间)不启动自动调用，周1-5每6小时自动启动一次 （修改看教程）
+
+相关
+  AutoApiP：https://githu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-02 22:37" pubdate>
+              2021-02-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">资源分享</a>
+            
+              <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/02/apply-for-office-e5-developer/" target="_self">
+          免费申请office E5开发者订阅
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/02/apply-for-office-e5-developer/" target="_self">
+          
+          
+            
+          
+          前言微软开发者计划E5是为开发人员提供的，是微软的官方活动，申请Office 365开发者计划可以获得为期3个月的免费Office365 E5。 而E5计划就包含了25个用于所有Office 365 应用的许可证。三个月到期后还可通过相关途径成功续期。
+申请账号1.访问申请链接 https://developer.microsoft.com/zh-cn/microsoft-365/dev-prog
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-02 22:28" pubdate>
+              2021-02-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">资源分享</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/02/netflix-spotify-apple/" target="_self">
+          低价开通奈飞等服务的小技巧
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/02/netflix-spotify-apple/" target="_self">
+          
+          
+            
+          
+          发现有很多人想开通Netflix等服务，但不知道哪里最便宜，这里我简单写了个教程，可供大家参考。
+Netflix区
+Basic
+Standard
+Premium
+美国
+8.99USD
+14.99USD
+17.99USD
+土耳其
+17.99TRY
+29.99TRY
+41.99TRY
+巴西
+21.90BRL
+32.90BRL
+45.90BRL
+阿根廷
+199ARS
+319ARS
+449ARS
+比较好的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-02 21:40" pubdate>
+              2021-02-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">资源分享</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/29/fan-xiang-dai-li-dns/" target="_self">
+          利用反向代理和DNS智能解析加快网站访问速度
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/29/fan-xiang-dai-li-dns/" target="_self">
+          
+          
+            
+          
+          自从上次绿云（GreenCloud）突然的系统故障导致我的博客数据取不出来后，我决定放弃用绿云建站，转而使用口碑更好、更加稳定的contabo，contabo有德国慕尼黑、纽伦堡、美国密苏里州3个机房，我选择的是他家的德国纽伦堡机房，因为服务器远在德国，国内直接访问速度十分不佳，丢包严重，因此我决定使用反向代理的方式来加快网站的访问速度。
+反向代理反向代理简介反向代理在电脑网络中是代理服务器的一种
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-29 15:32" pubdate>
+              2021-01-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%BB%BA%E7%AB%99%E7%9F%A5%E8%AF%86/">建站知识</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/29/hetzner/" target="_self">
+          Hetzner拍卖机简单评测
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/29/hetzner/" target="_self">
+          
+          
+            
+          
+          上个月买的Hetzner拍卖机刚好今天到期，趁着还没停机做个简单的评测。
+一.基本信息
+二.硬盘读写
+
+三.网络情况
+四.使用感受这款机是我拿来刷PT的，总体体验非常好，G口的上下行随时都能够跑满，不限流量，我这个月一共用了200T的流量，也没有发现限速的情况，对于需要抢上传的PT用户来说是非常合适的，性能也非常不错，同时下上百个种也没有出现卡顿的情况，CPU不会占用达到100%，唯一的缺点就是价
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-29 14:01" pubdate>
+              2021-01-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/VPS%E8%AF%84%E6%B5%8B/">VPS评测</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/27/minecraft-build/" target="_self">
+          用腾讯轻量搭建带WEB控制台的MC服务器
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/27/minecraft-build/" target="_self">
+          
+          
+            
+          
+          众所周知mc多好玩，大家都喜爱，可是守护进程有点麻烦，screen经常会有些问题，所以不如搞个面板，顺便也解决守护进程问题 （能不用手就不用手），腾讯轻量大家应该都有，直接开始。
+一.安装宝塔选择好相应的系统后，用对应的脚本安装宝塔面板。
+Centos安装命令1yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-27 23:55" pubdate>
+              2021-01-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/26/cloudflare-cdn/" target="_self">
+          (转载)网站使用CloudFlare自选节点IP教程，免费CDN加速VPS
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/26/cloudflare-cdn/" target="_self">
+          
+          
+            
+          
+          网站套CloudFlare自选ip节点教程！很多站长注册使用CloudFlare免费CDN加速网站全球访问速度，还带防御功能，隐藏服务器真实IP。但是CF自动分配的IP比较慢。所以我们利用CloudFlare Partner 和Dnspod来自定义节点优化加速效果。
+使用CFP，CNANE方式接入CFCFP是指Cloudflare Partner，第三方合作伙伴。如果在Cloudflare官网添加
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-26 21:12" pubdate>
+              2021-01-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/25/speed-test-iperf3/" target="_self">
+          测试 VPS 本地连接最大速度 iperf3
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/25/speed-test-iperf3/" target="_self">
+          
+          
+            
+          
+          大多 VPS 测速脚本使用 speedtest、fast.com 测速节点，很多时候不能真实反映本地连接速度，最直接方法还是从本地发起测试。有个 iperf3 工具可以从本地测试 VPS 可达的最大带宽速度，支持 TCP /UDP 多线程并发测速。
+获取安装 iperf3Centos1yum -y install iperf3
+
+Ubuntu/Debian1apt-get -y install i
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-25 19:35" pubdate>
+              2021-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/25/frp/" target="_self">
+          利用腾讯轻量服务器搭建FRP服务
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/25/frp/" target="_self">
+          
+          
+            
+          
+          在如今这个IPV4缺乏的年代，家庭宽带获取到公网IPV4相对比较困难，特别是移动用户，基本上就是默认不给公网IPV4，这时候，如果我们想要把内网的资源映射到公网上去，可能会需要用到内网穿透。而FRP就是提供这种服务的一种工具废话少说，现在开始进入正题。
+一.腾讯轻量服务器购买对于预算较低的用户，香港地区24的轻量还是非常推荐的，点此购买。
+
+这边我们选择系统镜像，我们以centos8为例。
+二.开
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-25 19:30" pubdate>
+              2021-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/25/qbittorrent-deluge-rtorrent-transmission/" target="_self">
+          一键PT脚本安装qBittorrent+Deluge+rTorrent+Transmission
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/25/qbittorrent-deluge-rtorrent-transmission/" target="_self">
+          
+          
+            
+          
+          注意事项
+ 本脚本只支持 x86_64 (amd64) 架构，其他架构都不支持。ARM 用户建议使用 QuickBox ARM
+ 本脚本只在独服和 KVM 虚拟化的 VPS 下测试，OpenVZ、Xen 等其他虚拟化架构仍可以尝试使用，但不保证没问题
+ 本脚本目前支持 Debian 9/10, Ubuntu 16.04/18.04. 推荐使用 Debian 10 或 Ubuntu 18.04
+ 本
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-25 19:21" pubdate>
+              2021-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PT/">PT</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

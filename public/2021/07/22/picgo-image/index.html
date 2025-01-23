@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>利用Picgo和GitHub搭建图床 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="利用Picgo和GitHub搭建图床">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-22 17:47" pubdate>
+        2021年7月22日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      755 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">利用Picgo和GitHub搭建图床</h1>
+            
+            <div class="markdown-body">
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>刚开始写博客时，文章中的图片我总是在博客写好后一张张上传到我的服务器中，后来我觉得这样既麻烦又占用服务器的空间，于是我转向了图床，我选择用另一台服务器搭建图床，将图片上传到图床上，然后通过外链来使用我所要用的图片，但这样过了一段时间后，当我的服务器到期时，如果我不选择续费，那么储存在上面的图片也将消失，如果选择搬迁又要在文章中更改图片的外链，这样一来就十分麻烦。最终我找到了一个自动化程度高、并且不需要担心图片丢失的方法来存储图片——利用Picgo+GitHub搭建一个好用的图床。</p>
+<p>以下便是具体的操作步骤。</p>
+<h1 id="GitHub方面"><a href="#GitHub方面" class="headerlink" title="GitHub方面"></a>GitHub方面</h1><h2 id="新建一个GitHub仓库"><a href="#新建一个GitHub仓库" class="headerlink" title="新建一个GitHub仓库"></a>新建一个GitHub仓库</h2><p>打开GitHub，点击New repository。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722170922637.png" srcset="/img/loading.gif" lazyload alt="image-20210722170922637"></p>
+<p>Repository name任意填，Description写不写都行，选择Public，最后点击Create repository。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722171456242.png" srcset="/img/loading.gif" lazyload alt="image-20210722171456242"></p>
+<h2 id="获取Token"><a href="#获取Token" class="headerlink" title="获取Token"></a>获取Token</h2><p>点击个人头像–Settings–Developer settings–Personal access tokens，然后点击Generate new token，Note任意填写，Select scopes只需要勾选第一个repo即可，最后点击Generate token</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722171848314.png" srcset="/img/loading.gif" lazyload alt="image-20210722171848314"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722172016238.png" srcset="/img/loading.gif" lazyload alt="image-20210722172016238"></p>
+<p>这时便会生成token，一定要把它复制下来并保存好，因为它只出现一次。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722172143874.png" srcset="/img/loading.gif" lazyload alt="image-20210722172143874"></p>
+<h1 id="Picgo方面"><a href="#Picgo方面" class="headerlink" title="Picgo方面"></a>Picgo方面</h1><h2 id="安装Picgo"><a href="#安装Picgo" class="headerlink" title="安装Picgo"></a>安装Picgo</h2><p>Picgo的下载地址为：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a></p>
+<p>Windows下载exe，Mac下载dmg，下载完成后安装即可。</p>
+<h2 id="配置Picgo"><a href="#配置Picgo" class="headerlink" title="配置Picgo"></a>配置Picgo</h2><p>这是Picgo的界面，简介美观。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722172551098.png" srcset="/img/loading.gif" lazyload alt="image-20210722172551098"></p>
+<p>点击图床设置– GitHub图床，设定仓库名这一栏：你的GitHub用户名/你的仓库名</p>
+<p>设定分支名这一栏：main或者master或其他你自己设定的分支（默认为main）</p>
+<p>设定Token这一栏：刚才生成的Token</p>
+<p>指定存储路径这一栏：可留空，如果你想放在文件夹中，填写文件夹的名字再加上反斜杠/即可。</p>
+<p>设定自定义域名这一栏：可留空，如果你想使用jsdelivr的cdn服务加快图片打开速度，那么你可以填写：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/GitHub">https://cdn.jsdelivr.net/gh/GitHub</a>用户名/仓库名。</p>
+<p>总体内容如下图所示，最后点击确定即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722172652468.png" srcset="/img/loading.gif" lazyload alt="image-20210722172652468"></p>
+<h1 id="图床使用"><a href="#图床使用" class="headerlink" title="图床使用"></a>图床使用</h1><p>一般情况下，当我们想上传图片时，只需将图片拖动到Picgo的界面上传或者直接点击剪贴板图床上传（一般用于截图）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722173508025.png" srcset="/img/loading.gif" lazyload alt="image-20210722173508025"></p>
+<h2 id="快速上传（基本自动化）"><a href="#快速上传（基本自动化）" class="headerlink" title="快速上传（基本自动化）"></a>快速上传（基本自动化）</h2><p>我平时主要使用Typora写作，在Typora的设置中选择图像，在插入图片时这一栏选择上传图片，在上传服务这一栏选择PicGo.app,这样当我们截图并将图片粘贴到Typora中时，图片便会自动上传至GitHub，无需再打开Picgo的界面进行上传，此时Typora文章中的所有图片地址均显示为外链，这个方法在我看来是非常好用的并且强烈推荐的，省去了多余的步骤，实现了基本的自动化。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/image-20210722173718490.png" srcset="/img/loading.gif" lazyload alt="image-20210722173718490"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">服务搭建</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/03/%E6%9C%80%E8%BF%91/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">最近</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/21/macbook-usage/">
+                        <span class="hidden-mobile">MacBook使用体验</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

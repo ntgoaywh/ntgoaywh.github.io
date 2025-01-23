@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="my blog">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>微软Office相关订阅全介绍 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="微软Office相关订阅全介绍">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-06 01:36" pubdate>
+        2021年2月6日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      30
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">微软Office相关订阅全介绍</h1>
+            
+            <div class="markdown-body">
+              <p>Office有许多版本，可以分为个人版/企业版。帐号有分2个版本，分别是个人帐号/企业子帐号 ，企业版有一个概念叫做全局。可以理解为一个企业。一个全局底下有许多帐号，有不同权限。其中管理员可以任意新增/删除/查看其他帐号/他们底下的任意档案 还有概念叫订阅的。不像个人帐号，企业子帐号什么都不能干，登入以后就是一个空白页面。需要有订阅才能用服务。 没有购买任何订阅的全局叫做空全局，没有管理员的全局叫做无管理全局 订阅底下则包含许多服务，不同的订阅包含不同的服务。 像A1包含outlook onedrive等等，A1P比A1多了桌面板office。</p>
+<p>管理员可以购买订阅，按人头算钱，然后分配给其他子帐号。 企业子帐号要有订阅，才能使用office outlook onedrive之类的功能。 本篇文章里的全部帐号类型都是企业子帐号</p>
+<h1 id="教育tag"><a href="#教育tag" class="headerlink" title="教育tag"></a>教育tag</h1><ul>
+<li>  微软后台给全局打的标记，有教育tag，非营利tag，政府tag之类的</li>
+<li>  只有有标记了教育tag的全局能购买教育订阅</li>
+</ul>
+<h2 id="教育订阅"><a href="#教育订阅" class="headerlink" title="教育订阅"></a>教育订阅</h2><ul>
+<li>  微软给教育单位一些优惠，给学生使用。 A1/A3/A5之类的，其中A1的价格是0元</li>
+<li>  只有有标记了教育tag的全局能购买教育订阅</li>
+<li>  有许多人假装自己是教育机构，弄到教育订阅</li>
+<li>  一旦被微软发现你不是正规教育机构，直接翻车</li>
+</ul>
+<h2 id="教育域名"><a href="#教育域名" class="headerlink" title="教育域名"></a>教育域名</h2><ul>
+<li>edu.xx 类<ul>
+<li>  微软为了加速审核，有部分域名加入了白名单。只要你用 edu.xx 的域名注册，会直接通过教育资格审核，拿到教育tag</li>
+<li>  有些edu域名审核不严，白票的人太多，微软随后又ban掉一些 edu.xx 了。例如edu.ge/edu.rs都过不了微软的教育验证</li>
+</ul>
+</li>
+<li>普通域名类<ul>
+<li>  很久以前，有些国家没有教育域名。学校就直接用 org/com/.xx之类的域名了。</li>
+<li>  例如香港科技大学，用的是 ust.hk ，而不是 ust.edu.hk</li>
+<li>  那些学校和微软申请教育资格，微软就顺便把域名加入教育白名单了</li>
+<li>  在此之后那些国家推出了教育域名，于是有部分大学就换成 edu.xx 域名了</li>
+<li>  以前的普通域名，又有一部份就被废弃了。可以被我们注册/购买</li>
+<li>  但是这些域名还在白名单里面。我们就叫他教育域名。 A1贩子扫描了一大堆</li>
+</ul>
+</li>
+<li>A1P域名<ul>
+<li>  这个我就真的不清楚来源了</li>
+<li>  我只知道有些域名的教育资格不太一样</li>
+<li>  一般都是下发A1许可，但是有的域名下发A1P许可(非常稀有)</li>
+<li>  我猜当初那些学校有和微软签什么协议吧?不知道有没有大佬说明一下?</li>
+</ul>
+</li>
+</ul>
+<h2 id="自助网页"><a href="#自助网页" class="headerlink" title="自助网页"></a>自助网页</h2><ul>
+<li>  早些年，微软舔学校，搞了个<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/education/products/office">自助网页</a>。只要你输入教育域名的信箱，微软就自动帮你开一个无管理全局，然后帮你开一个子帐号。</li>
+<li>  学校网管可以DNS验证，接管这个全局，但是大部分学校根本不理</li>
+<li>  很多edu信箱可以注册无管理全局的子帐号，就是这样来的</li>
+<li>  现在网页还留着，但是功能已经大幅限缩，不再开新全局了</li>
+<li>  现在的自助网页，首先会先检查这个域名是不是已经有全局，如果没全局，就不再开新全局了。如果已经有全局，而且有教育订阅，就帮你开个号，给你一个教育订阅</li>
+<li>  重点来了，如果有全局，没订阅(或是订阅满了)。而你的域名有教育资格，微软会直接给这个全局下发500个A1/A1P订阅。一开始是1500000，白票的人太多变成5000，去年5月变成500</li>
+<li>  自助网页只看域名，不看tag。无tag教育订阅就是这样来的。</li>
+<li>  这种操作手法，我们称为偷渡</li>
+<li>而且还有这种操作<ul>
+<li>  全局绑定教育一个域名</li>
+<li>  用上面方法偷渡许可</li>
+<li>  解绑域名</li>
+<li>  回到步骤1，绑另一个全局</li>
+<li>  A1贩子不知道用这方法，刷了几百个全局出来卖</li>
+<li>  此方法已被封，现在一旦解绑域名，不仅域名直接移出白名单，还附赠删订阅+掉tag</li>
+</ul>
+</li>
+</ul>
+<h2 id="正规注册"><a href="#正规注册" class="headerlink" title="正规注册"></a>正规注册</h2><ul>
+<li>  现在微软已经不再自动开全局了。学校必须透过<a target="_blank" rel="noopener" href="https://signup.microsoft.com/signup?OfferId=6c1a80e7-cc3f-4e01-baaf-385fbda7cdfc,f31e46de-fe53-4a3e-ae1d-d6ffda791387&DL=STANDARDWOFFPACK_FACULTY">这个连结</a>来申请注册。</li>
+<li>  申请通过以后，全局能够获取教育tag。</li>
+<li>  有教育域名可以直接通过申请，没有的话就要准备文件，提交人工申请审核</li>
+<li>  取得了教育tag以后，才能购买教育许可。其中A1许可的价格是0元，最多购买1500000份</li>
+</ul>
+<h2 id="教育许可"><a href="#教育许可" class="headerlink" title="教育许可"></a>教育许可</h2><ul>
+<li>A1<ul>
+<li>  最常见的许可。订阅价格0元</li>
+<li>  onedrive，1T(预设)/5T(管理员扩容)/25T(找微软客服扩容)</li>
+<li>  outlook，当域名邮箱使用</li>
+</ul>
+</li>
+<li>A1P<ul>
+<li>  学校签协议送的许可</li>
+<li>  比上面多了桌面板office 365的服务</li>
+</ul>
+</li>
+<li>A3<ul>
+<li>  比上面多了Minecraft教育版</li>
+<li>  微软去年5月曾经不小心把A3的价格设定成0元，大家狂买。后来恢复正常。</li>
+<li>  微软也发现很多人白票，立刻严查! 当时买到的高机率被封</li>
+<li>  不过没被封的就真的永久0元了</li>
+</ul>
+</li>
+</ul>
+<p>还有一些手段例如MPN/经销商购买之类，能够弄到A5之类的订阅</p>
+<h1 id="翻车"><a href="#翻车" class="headerlink" title="翻车"></a>翻车</h1><ul>
+<li>  微软发现你这个全局不是正规教育机构，就会封禁你，俗称翻车</li>
+<li>翻车分为几个种类<ul>
+<li>掉许可<ul>
+<li>  许可不见了</li>
+<li>  看起来是最轻程度的惩罚</li>
+<li>  我没遇过这种的，有大佬能说说吗?</li>
+</ul>
+</li>
+<li>封掉你全局管理<ul>
+<li>  一开始都是这样封的</li>
+<li>  但是mjj们很快学会了，新增一个特权管理帐户</li>
+<li>  特权管理不是全局管理。但是能新增别的全局管理</li>
+</ul>
+</li>
+<li>封掉你全部管理<ul>
+<li>  微软很快就发现特权管理了，就改成封掉你全部的管理</li>
+<li>  只要是个管理就封号</li>
+<li>  但是mjj们很快学会了。改用自助网页刷子号</li>
+<li>  但是就算没有管理，只要域名还在，自助网页就能运作</li>
+<li>  只要架一个域名邮箱，就能继续刷子号(无管理)</li>
+</ul>
+</li>
+<li>全部帐号封禁<ul>
+<li>  微软很快就发现自助网页刷子号了</li>
+<li>  全部帐号封禁，不管你是不是管理</li>
+<li>  为了避免误封，影响到全校师生，一般封禁只封管理，正规学校提就能供资料找回。这样被封禁期间，学生不受影响</li>
+<li>  微软确定这个全局100%不是正规订阅，才会这样封</li>
+<li>  但是mjj们很快学会了。改用API解封</li>
+<li>  去AAD新增一组API Key，事先给这个API授权，全局管理权限</li>
+<li>  就算全部用户都被封了，但是API不是用户。因为API还有权限，可以再新增全局管理，拿回控制</li>
+</ul>
+</li>
+<li>把你SPO quota设定成0<ul>
+<li>  微软发现API解封了。现在索性不封你帐号了，封了也被各种找回</li>
+<li>  office后端，几乎全部的服务都是基于 Share Point Online架构的，以下简称SPO</li>
+<li>  onedrive / outlook / sites / teams 等等里面的一切纪录/文件，都是位于SPO里面的档案</li>
+<li>  而SPO是有每日额度限制的</li>
+<li>  后端直接把你的quota设定成0，你就几乎什么都用不了了</li>
+<li>  一般说的OD不能用/OD挂掉，就是这一类</li>
+<li>  而这个quota我们是完全无法修改的，只能在微软后台更改</li>
+<li>  这下算是一劳永逸了。不用管你有什么找回帐号的方法，反正帐号也不能正常用了</li>
+<li>  A1P以上的，还能激活office365桌面板。 A1子号就真的完全没用了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="开发者订阅"><a href="#开发者订阅" class="headerlink" title="开发者订阅"></a>开发者订阅</h1><ul>
+<li>  微软的生态系很大，充满了各种API</li>
+<li>  为了鼓励开发者们免费帮微软开发各种app，微软开了一扇方便之门，帮开发者们弄了个开发者订阅</li>
+<li>  为了方便开发者们开发各式app，不要遇到奇怪的限制。 开发者订阅几乎解锁了全部服务，除了一些比较贵的服务例外。例如打电话/激活windows之类</li>
+<li>  开发者分2类，一类是免费开发者，可以去<a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/microsoft-365/dev-program">这里注册</a>。</li>
+<li>  一种是付费开发者，要购买MSDN。能获得更多的开发资源，例如Azure额度之类，作为开发/测试用途</li>
+<li>  开发者订阅仅限开发用途</li>
+</ul>
+<h2 id="常见的开发者订阅"><a href="#常见的开发者订阅" class="headerlink" title="常见的开发者订阅"></a>常见的开发者订阅</h2><ul>
+<li>E3 MSDN<ul>
+<li>  2018年附近，微软给MSDN开发者提供了E3 MSDN订阅</li>
+<li>  时限永久，很快就关闭注册渠道，绝版了</li>
+<li>  现在看来，是最稳的永久订阅。几乎不会翻车。真的翻车，唯一的理由是微软说仅限开发用途，你违反协议</li>
+<li>  因为微软当初就承诺永久，而且不像A1之类，仅限教育机构。非教育机构注册，被抓到会翻车</li>
+</ul>
+</li>
+<li>E5 MSDN<ul>
+<li>  现在微软给的是E5 MSDN，没有时限</li>
+<li>  不过你MSDN订阅过期，这个订阅一起失效</li>
+</ul>
+</li>
+<li>E3 开发者<ul>
+<li>  微软给免费开发者提供的订阅，时限1年</li>
+</ul>
+</li>
+<li>E5 开发者<ul>
+<li>  微软给免费开发者提供的订阅，时限90天，可续期</li>
+<li>  微软写说会侦测这个帐号底下的行为。 API呼叫纪录，各种服务使用情况之类的</li>
+<li>  微软判断这个帐号是拿来开发app的，才会自动续期</li>
+<li>  实际续期还是各种玄学。有人天天刷API还是没过，有人什么事都没做自动续期</li>
+</ul>
+</li>
+<li>上面这些订阅，全部都<ul>
+<li>  25人份订阅</li>
+<li>  有outlook</li>
+<li>  有桌面板office365</li>
+<li>  有onedrive 1T(预设)/5T(管理员扩容)/25T(找微软客服扩容)</li>
+</ul>
+</li>
+</ul>
+<h1 id="其他订阅"><a href="#其他订阅" class="headerlink" title="其他订阅"></a>其他订阅</h1><ul>
+<li>E3 SY<ul>
+<li>  微软曾经不小心开放购买，价格0元</li>
+<li>  已关闭购买渠道，已绝版</li>
+<li>  听说大量被封禁</li>
+<li>  功能等同E3</li>
+</ul>
+</li>
+<li>Teams free<ul>
+<li>  要使用Teams，必须要有订阅</li>
+<li>用个人帐号开通Teams时，微软在后台的操作是:<ul>
+<li>  开一个全局</li>
+<li>  下发50万Trams free订阅</li>
+<li>  把你提升为管理员</li>
+</ul>
+</li>
+<li>  然后你就有订阅了，才能在Teams操作。你可以去aad把那个微软自动开的全局接管，就能看到Teams free订阅了</li>
+<li>  这个订阅几乎什么都没有</li>
+<li>  有Teams使用权限(废话)</li>
+<li>  没有outlook</li>
+<li>  没有桌面板office365</li>
+<li>  倒是有onedrive 2G(预设)/1T(管理员扩容)</li>
+<li>  全局SPO总容量1T。此容量全局共用，不管你开几个子号都没用。就是这1T</li>
+<li>  管理可以设定单一帐号限制25T，但是全局容量只有1T，你看到SPO设定限制25T是假的</li>
+</ul>
+</li>
+<li>Teams exploratory<ul>
+<li>  要使用Teams，必须要有订阅</li>
+<li>  用企业子帐号开通Teams时，如果那个全局没有Teams订阅，就会自动下发100个Teams exploratory订阅，有效期一年</li>
+<li>  一年过了会怎样我也不知道</li>
+<li>  有outlook</li>
+<li>  有onedrive 1T(预设)/5T(管理员扩容)</li>
+<li>  没有桌面板office365</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">资源分享</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/11/blog-da-jian/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">从零开始搭建一个属于自己的博客(纯小白教程)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/05/windows-terminal-proxy/">
+                        <span class="hidden-mobile">给 Windows Terminal配置代理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
