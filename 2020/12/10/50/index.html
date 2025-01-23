@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一.一键DD Linux系统的用途基本所有的VPS服务器商家，都会提供免费的Linux系统供安装，比如CentOS、Debian、Ubuntu等。那为什么还要使用一键DD脚本重装/更换系统呢？
+商家提供的系统版本有限，可能没有自己需要的版本。商家的系统安装有自己不想要的服务，比如国内的阿里云盾（安骑士）。商家的系统无法安装特定软件，比如很挑内核的锐速。以上几种情况，一键DD脚本就可以为服务器更换一">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>(萌咖) 一键DD脚本CentOS/Debian/Ubuntu - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ntgoaywh.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>limttkx's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/ntgoaywh/picgo/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="(萌咖) 一键DD脚本CentOS/Debian/Ubuntu">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-10 08:03" pubdate>
+        2020年12月10日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      989 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">(萌咖) 一键DD脚本CentOS/Debian/Ubuntu</h1>
+            
+            <div class="markdown-body">
+              <h1 id="一-一键DD-Linux系统的用途"><a href="#一-一键DD-Linux系统的用途" class="headerlink" title="一.一键DD Linux系统的用途"></a>一.一键DD Linux系统的用途</h1><p>基本所有的VPS服务器商家，都会提供免费的Linux系统供安装，比如CentOS、Debian、Ubuntu等。那为什么还要使用一键DD脚本重装/更换系统呢？</p>
+<p>商家提供的系统版本有限，可能没有自己需要的版本。<br>商家的系统安装有自己不想要的服务，比如国内的阿里云盾（安骑士）。<br>商家的系统无法安装特定软件，比如很挑内核的锐速。<br>以上几种情况，一键DD脚本就可以为服务器更换一个纯净的系统，帮你解决问题。</p>
+<span id="more"></span>
+<p>所需环境<br>以网络流传较广的Vicer一键DD为例，其所需环境为：</p>
+<p>架构：KVM/XEN，不支持OpenVZ。</p>
+<p>系统：Debian/Ubuntu/CentOS</p>
+<h1 id="二-一键DD脚本使用教程"><a href="#二-一键DD脚本使用教程" class="headerlink" title="二.一键DD脚本使用教程"></a>二.一键DD脚本使用教程</h1><p>注意事项：</p>
+<p>Vicer脚本目前不支持重装为CentOS 7系统，支持CentOS 6.9以下版本。<br>重装的系统源自官方发行版。<br>安装过程全自动进行，无需VNC操作，无需进入救援模式。<br>系统安装完成后的默认用户名为root，默认密码为:MoeClub.org<br>DD脚本示例：</p>
+<p>由于脚本命令中需要写明目标系统版本，所以根据需求不同，最终的运行命令也各不相同。</p>
+<p>下面提供几个使用范例，可以直接复制使用，也可以将命令中的系统版本替换为其它版本。</p>
+<p>重装为CentOS 6.9：<br>以下命令中的 -c 后面为CentOS版本号，-v 后面为64位/32位，可根据需求进行替换。</p>
+<h1 id="CentOS-6-9-64位："><a href="#CentOS-6-9-64位：" class="headerlink" title="CentOS 6.9 64位："></a>CentOS 6.9 64位：</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> &lt;(wget --no-check-certificate -qO- &#x27;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#x27;) -c <span class="hljs-number">6</span>.<span class="hljs-number">9</span> -v <span class="hljs-number">64</span> -a<br></code></pre></td></tr></table></figure>
+
+<h1 id="CentOS-6-9-32位："><a href="#CentOS-6-9-32位：" class="headerlink" title="CentOS 6.9 32位："></a>CentOS 6.9 32位：</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> &lt;(wget --no-check-certificate -qO- &#x27;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#x27;) -c <span class="hljs-number">6</span>.<span class="hljs-number">9</span> -v <span class="hljs-number">32</span> -a<br></code></pre></td></tr></table></figure>
+
+<p>重装为Debian：<br>以下命令中的 -d 后面为Debian版本号，-v 后面为64位/32位，可根据需求进行替换。</p>
+<h1 id="Debian-8-64位："><a href="#Debian-8-64位：" class="headerlink" title="Debian 8 64位："></a>Debian 8 64位：</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">bash &lt;(<span class="hljs-name">wget</span> --no-check-certificate -qO- &#x27;https<span class="hljs-symbol">://moeclub</span>.org/attachment/LinuxShell/InstallNET.sh&#x27;) -d <span class="hljs-number">8</span> -v <span class="hljs-number">64</span> -a<br></code></pre></td></tr></table></figure>
+
+<h1 id="Debian-9-64位："><a href="#Debian-9-64位：" class="headerlink" title="Debian 9 64位："></a>Debian 9 64位：</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">bash &lt;(<span class="hljs-name">wget</span> --no-check-certificate -qO- &#x27;https<span class="hljs-symbol">://moeclub</span>.org/attachment/LinuxShell/InstallNET.sh&#x27;) -d <span class="hljs-number">9</span> -v <span class="hljs-number">64</span> -a<br></code></pre></td></tr></table></figure>
+
+<p>重装为Ubuntu：<br>以下命令中的 -u 后面为Ubuntu版本号，-v 后面为64位/32位，可根据需求进行替换。</p>
+<h1 id="Ubuntu-12-04-64位："><a href="#Ubuntu-12-04-64位：" class="headerlink" title="Ubuntu 12.04 64位："></a>Ubuntu 12.04 64位：</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> &lt;(wget --no-check-certificate -qO- &#x27;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#x27;) -u <span class="hljs-number">12</span>.<span class="hljs-number">04</span> -v <span class="hljs-number">64</span> -a<br></code></pre></td></tr></table></figure>
+
+<h1 id="Ubuntu-14-04-64位："><a href="#Ubuntu-14-04-64位：" class="headerlink" title="Ubuntu 14.04 64位："></a>Ubuntu 14.04 64位：</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> &lt;(wget --no-check-certificate -qO- &#x27;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#x27;) -u <span class="hljs-number">14</span>.<span class="hljs-number">04</span> -v <span class="hljs-number">64</span> -a<br></code></pre></td></tr></table></figure>
+
+<h1 id="Ubuntu-16-04-64位："><a href="#Ubuntu-16-04-64位：" class="headerlink" title="Ubuntu 16.04 64位："></a>Ubuntu 16.04 64位：</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> &lt;(wget --no-check-certificate -qO- &#x27;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#x27;) -u <span class="hljs-number">16</span>.<span class="hljs-number">04</span> -v <span class="hljs-number">64</span> -a<br></code></pre></td></tr></table></figure>
+
+<h1 id="Ubuntu-18-04-64位："><a href="#Ubuntu-18-04-64位：" class="headerlink" title="Ubuntu 18.04 64位："></a>Ubuntu 18.04 64位：</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> &lt;(wget --no-check-certificate -qO- &#x27;https://moeclub.org/attachment/LinuxShell/InstallNET.sh&#x27;) -u <span class="hljs-number">18</span>.<span class="hljs-number">04</span> -v <span class="hljs-number">64</span> -a<br></code></pre></td></tr></table></figure>
+
+<h1 id="三-关于系统重装过程"><a href="#三-关于系统重装过程" class="headerlink" title="三.关于系统重装过程"></a>三.关于系统重装过程</h1><p>运行包含正确系统版本号的脚本后，新系统的安装会自动进行，无需人工干预。</p>
+<p>可能的三种情况：</p>
+<p>正常情况下10分钟左右就可以安装成功了，期间可以在VNC中观察安装过程：</p>
+<p>如果安装CentOS 7版本，会出现下图提示，表示不支持：</p>
+<p>如果输入了其它不支持或不存在的系统版本，则会出现下图提示，中止安装：</p>
+<p>重装系统后更改root密码<br>耐心等待系统安装成功后，出于安全考虑，建议立即更改默认密码。</p>
+<p>具体方法：</p>
+<p>1.使用Putty以上文提供的默认密码登录，输入以下命令：passwd root</p>
+<p>2.接下来会分两次要求输入新的密码，可以手动输入，也可以在其它位置复制一个密码，然后在Putty界面右键点击即可粘贴上去。</p>
+<p>注意：输入新密码时并不会直接显示出来，光标也不会移动，这是正常的。</p>
+<p>3.再次登录系统时，记得使用新的root密码。</p>
+<p>默认密码：</p>
+<p>MoeClub.org</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86/">脚本合集</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/10/51/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">3W多张COSPLAY图片，随机api</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/07/49/">
+                        <span class="hidden-mobile">ServerStatus-Hotaru探针安装时可能出现的问题及解决办法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
